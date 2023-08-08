@@ -14,15 +14,18 @@ const handleClients = async () => {
             console.log(client);
         main.innerHTML += `
         <div class="row">
-            <h3>${client.toUpperCase()}</h3>
+            <div class="titleDiv">
+                <p class="title">${client.toUpperCase()}</p>
+                <button class="filter">Filter</button>
+            </div>
             <div class="btnsDiv">
-                <button class="half">1/2 hour</button>
-                <button class="one">1 hour</button>
-                <button class="five">5 hours</button>
-                <button class="twenty">20 hours</button>
+                <button class="half">1/2</button>
+                <button class="one">1</button>
+                <button class="five">5</button>
+                <button class="twenty">20</button>
             </div>
             <div class="remainDiv">
-                <button class="minusHalf">- 1/2 h</button>
+                <button class="minusHalf">- 1/2 hour</button>
                 <p class="remain">0</p>
             </div>
         </div>

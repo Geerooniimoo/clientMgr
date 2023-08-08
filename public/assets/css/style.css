@@ -1,3 +1,6 @@
+/* * {
+    border: 1px solid red;
+} */
 
 body {
     margin: 0;
@@ -22,31 +25,70 @@ nav {
 }
 
 .row {
+    padding: 5px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    border: 2px solid #000;
-    padding: 10px;
+    flex-basis: 100%;
     border-radius: 8px;
     background: white;
+    border: 2px solid #000;
+    justify-content: space-between;
+    height: 35px;
 }
 
-.row h3 {
-    background: lightgray;
-    border: 1px solid #000;
-    padding: 5px;
-    margin: 0 5px;
-    border-radius: 8px;
-    font-size: 2.5rem;
-}
-
-.row input {
-    padding: 5px;
-}
-
-.row div {
+.row > * {
     display: flex;
+    align-self: stretch;
+    justify-content: space-between;
+    font-size: 170%;
+    font-weight: 900;
+    width: 30%;
+}
+
+.remain {
+    background: #bababa;
+    border: 1px solid black;
+    padding: 0 27px;
+}
+
+.titleDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    width: 65%;
+    font-size: 70%;
+    background: #bababa;
+    border: 1px solid black;
+    margin: 0;
+    padding: 5px;
+}
+
+.filter {
+    width: 20%;
+    margin-right: 0;
+    background: yellow;
+    color: gray;
+}
+
+.remainDiv {
+    justify-content: space-between;
+}
+
+.row > *:not(:last-child) {
+    margin-right: 5%;
+}
+
+.btnsDiv > * {
+    width: 25%;
+}
+
+.minusHalf {
+    background: red;
+}
+
+.remain {
+    margin: 0;
 }
 
 button {
@@ -54,29 +96,4 @@ button {
     color: white;
     border-radius: 5px;
     font-weight: 900;
-}
-
-.btnsDiv {
-    display: flex;
-    height: 100%;
-}
-
-.remainDiv {
-    display: flex;
-    justify-content: space-between;
-    width: 25%;
-}
-
-.minusHalf {
-    background: red;
-    font-weight: 900;
-}
-
-.remain {
-    font-size: 3rem;
-    padding: 0 20px;
-    margin: 0 5px;
-    background: lightgray;
-    border: 2px solid black;
-    border-radius: 8px;
 }
