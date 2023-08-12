@@ -2,19 +2,19 @@ let data = [];
 
 const handleClients = async () => {
     
-    data = await ( await fetch('/api/data')).json();
+    data = await ( await fetch('/api/getdata')).json();
 
     if(data) {
         main.innerHTML = '';
-        data.forEach(({id,name,hours,dates,remains}) => {
+        data.forEach(({id,name,hours,dates,tutored, owe}) => {
         
-        let purchased = hours[0]*.5 + hours[1] + hours[2]*5 + hours[3]*10 + hours[4]*20;
-        let owed = purchased - dates.length*.5
-            
+        remainHours.innerHTML = data.map(({owe}) => owe).reduce((a,b)=>a+b);
+        activeClients.innerHTML = data.map(({owe}) => owe ? 1 : 0).reduce((a,b)=>a+b);
+
         main.innerHTML += `
         <div class="row">
             <div class="titleDiv">
-                <p class="title">${name}</p>
+                <p class="title">${name.toUpperCase()}</p>
                 <button class="filter">Filter</button>
             </div>
             <div class="btnsDiv">
@@ -25,8 +25,8 @@ const handleClients = async () => {
                 <button onclick="addTime('${id}',4)" class="twenty">20</button>
             </div>
             <div class="remainDiv">
-                <button class="minusHalf">- 1/2 hour</button>
-                <p class="remain">${owed}</p>
+                <button onclick="tutored('${id}')" class="minusHalf">- 1/2 hour</button>
+                <p class="remain">${owe}</p>
             </div>
         </div>
             `;
@@ -39,32 +39,47 @@ handleClients();
 const addClient = async () => {
     
     if(newClient.value) {
-        data = [ 
-            {
-                remain: 0,
-                dates: [],
-                hours: [0,0,0,0,0],
-                name: newClient.value,
-                id: Math.floor(Math.random()*1000000).toString(16)
-            }, ...data 
-        ];
 
-        let newUser = await fetch('/api/data', {
+        let newPerson = await (await fetch('/api/addclient', {
             method: 'POST',
-            body: JSON.stringify(data),
+            body: JSON.stringify({name:newClient.value}),
             headers: {'Content-Type': 'application/json'}
-        });
-        
-        if(newUser.ok) document.location.reload();
+        })).json()
+
+        data = [newPerson, ...data];
+
+        handleClients();
     };
 };
 
 const addTime = async (id,i) => {
-    let timeAdded = await fetch(`/api/data/${i}`, {
+    let timeAdded = await fetch(`/api/addtime/${i}`, {
         method: 'PUT',
         body: JSON.stringify({"id":id}),
         headers: {'Content-Type': 'application/json'},
     });
 
-    if(timeAdded.ok) document.location.reload();
+    if(timeAdded.ok) {
+        data.find(obj=>obj.id==id).hours[i] += 1;
+        handleClients();
+    };
+};
+
+const tutored = async id => {
+
+    let date = Date.now();
+    
+    let timeRemoved = await fetch(`/api/removetime/${id}`,{ 
+        method: 'PUT',
+        body: JSON.stringify({date}),
+        headers: {
+            'Content-Type': 'application/json'
+        } 
+    });
+
+    if(timeRemoved.ok) {
+        data.find(obj=>obj.id==id).dates.push(date);
+        data.find(obj=>obj.id==id).tutored += .5;
+        handleClients();
+    };
 };
