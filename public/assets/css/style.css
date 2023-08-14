@@ -1,4 +1,4 @@
-/* * {
+/* .row > * {
     border: 1px solid red;
 } */
 
@@ -86,16 +86,22 @@ nav {
     padding: 5px;
 }
 
-.filter {
+.focus {
     width: 20%;
     margin-right: 0;
-    background: yellow;
-    color: gray;
+    background: lightgray;
+    color: black;
     font-size: 1vw;
 }
 
 .remainDiv {
+    width: 25%;
     justify-content: space-between;
+}
+
+.remainDiv > span {
+    width: 5%;
+    text-align: center;
 }
 
 .row>*:not(:last-child) {
@@ -107,11 +113,7 @@ nav {
 }
 
 .minusHalf {
-    background: red;
-}
-
-.remain {
-    margin: 0;
+    background: #b11c1c;
 }
 
 button {
@@ -143,10 +145,10 @@ button {
 }
 
 #activeClients, #remainHours {
-    background: seagreen;
+    background: #b11c1c;
     border: 2px solid #000;
     justify-content: center;
-    color: black;
+    color: white;
     padding: 5px;
     width: auto;
 }

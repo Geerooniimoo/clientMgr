@@ -15,7 +15,7 @@ const handleClients = async () => {
         <div class="row">
             <div class="titleDiv">
                 <p class="title">${name.toUpperCase()}</p>
-                <button class="filter">Filter</button>
+                <button class="focus" onclick="focusFx('${id}')">focus</button>
             </div>
             <div class="btnsDiv">
                 <button onclick="addTime('${id}',0)" class="half">1/2</button>
@@ -26,7 +26,7 @@ const handleClients = async () => {
             </div>
             <div class="remainDiv">
                 <button onclick="tutored('${id}')" class="minusHalf">- 1/2 hour</button>
-                <p class="remain">${owe}</p>
+                <span class="remain">${owe}</span>
             </div>
         </div>
             `;
@@ -42,7 +42,7 @@ const addClient = async () => {
 
         let newPerson = await (await fetch('/api/addclient', {
             method: 'POST',
-            body: JSON.stringify({name:newClient.value}),
+            body: JSON.stringify({name:newClient.value,email: newEmail.value,phone:newNumber.value}),
             headers: {'Content-Type': 'application/json'}
         })).json()
 
@@ -82,4 +82,13 @@ const tutored = async id => {
         data.find(obj=>obj.id==id).tutored += .5;
         handleClients();
     };
+};
+
+const focusFx = async id => {
+    let sortData = await fetch(`/api/sort/${id}`, { method: 'PUT' });
+
+    if(sortData.ok) {
+        data = [ data.find(obj => obj.id == id), ...data.filter(obj => obj.id != id) ];
+        handleClients();
+    }
 };

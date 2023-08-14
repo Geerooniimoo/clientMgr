@@ -1,6 +1,7 @@
 const express = require('express');
 const { writeFile } = require('fs');
 let store = require('./db/data.json');
+const { log } = require('console');
 
 const app = express();
 const PORT = 3000;
@@ -57,6 +58,15 @@ app.put('/api/removetime/:id', ({ body: { date }, params: { id } }, res) => {
         if (err) { console.log(err) };
         res.json();
     });
-})
+});
+
+app.put('/api/sort/:id', ({params}, res) => {
+    store = [ store.find(({id}) => params.id == id ), ...store.filter(({id}) => id != params.id )];
+
+    writeFile('./db/data.json', JSON.stringify(store), err => {
+        if (err) { console.log(err) };
+        res.json();
+    });
+});
 
 app.listen(PORT, () => console.log(`Now listeing on http://localhost:${PORT}`));
