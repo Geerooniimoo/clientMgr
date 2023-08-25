@@ -60,12 +60,13 @@ app.put('/api/removetime/:id', ({ body: { date }, params: { id } }, res) => {
     });
 });
 
-app.put('/api/sort/:id', ({params}, res) => {
-    store = [ store.find(({id}) => params.id == id ), ...store.filter(({id}) => id != params.id )];
+app.put('/api/sortdata/:id', ({ params:{id} }, res) => {
+
+    store = [store.find(obj => obj.id == id), ... store.filter(obj => obj.id != id)];
 
     writeFile('./db/data.json', JSON.stringify(store), err => {
         if (err) { console.log(err) };
-        res.json();
+        res.json(store);
     });
 });
 
