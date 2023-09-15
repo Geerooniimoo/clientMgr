@@ -5,11 +5,20 @@ const handleClients = async focusId => {
     let fetchUrl = focusId ? fetch(`/api/sortdata/${focusId}`, { method: 'PUT' }) : fetch('/api/getdata');
     data = await (await fetchUrl).json()
 
-
-    console.log(data);
-
     main.innerHTML = '';
-    data.forEach(({ id, name, hours, dates, purchased, tutored, owe }) => {
+
+    let totalHourSold = data.map(({ hours: [half, one, five, ten, twenty] }) => half * .5 + one + five * 5 + ten * 10 + twenty * 20).reduce((a, b) => a + b);
+    let totalHourTutored = data.map(({ dates }) => dates.length).reduce((a, b) => a + b) / 2;
+
+    remainHours.innerHTML = totalHourSold - totalHourTutored;
+
+    let aClientCount = 0;
+
+    data.forEach(({ id, name, phone, email, hours, dates }) => {
+        let purchased = hours[0] * 0.5 + hours[1] + hours[2] * 5 + hours[3] * 10 + hours[4] * 20;
+        let owe = purchased - dates.length / 2;
+
+        if(owe) aClientCount += 1;
 
         if (focusId == id) {
             let dateCount = {};
@@ -20,11 +29,15 @@ const handleClients = async focusId => {
 
             main.innerHTML += `
                     <div class="row focusDiv">
-                        <h1 class="title">${name.toUpperCase()}</h1>
+                        <div class="focusHead">
+                            <h1>${name.toUpperCase()}</h1>
+                            <h1>${phone}</h1>
+                            <h1>${email}</h1>
+                        </div>
                         <h4>Hours Report</h4>
                         <h4>Tutored Dates</h4>
-                        <div class="datesDiv">
-                            <table>
+                        <div class="hourDiv">
+                            <table style="width:100%">
                                 <thead>
                                     <tr>
                                         <th></th>
@@ -40,18 +53,27 @@ const handleClients = async focusId => {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th>Hours</th>
+                                        <td>Hours</td>
                                         <td>${hours[0]}</td>
                                         <td>${hours[1]}</td>
                                         <td>${hours[2]}</td>
                                         <td>${hours[3]}</td>
                                         <td>${hours[4]}</td>
                                         <td>${purchased}</td>
-                                        <td>${tutored}</td>
+                                        <td>${dates.length / 2}</td>
                                         <td>${owe}</td>
                                     </tr>
                                 </tbody>
                             </table>
+
+                            <div style="width:100%">
+                                <button style="width:15%;height:40px" onclick="addTime('${id}',0)" class="half">1/2</button>
+                                <button style="width:15%;height:40px" onclick="addTime('${id}',1)" class="one">1</button>
+                                <button style="width:15%;height:40px" onclick="addTime('${id}',2)" class="five">5</button>
+                                <button style="width:15%;height:40px" onclick="addTime('${id}',3)" class="twenty">10</button>
+                                <button style="width:15%;height:40px" onclick="addTime('${id}',4)" class="twenty">20</button>
+                                <button style="width:17.5%;height:40px" onclick="focusTutored('${id}')" class="minusHalf">- 1/2 hr</button>
+                        </div>
                         </div>
 
                         <div class="datesDiv">
@@ -71,15 +93,15 @@ const handleClients = async focusId => {
                             </table>
                         </div>
                     </div>`;
-                    
+
             let cols = 3;
             let row = document.createElement('tr');
 
             Object.entries(dateCount).forEach(([d, c]) => {
                 row.innerHTML += `<td>${d}</td><td>${c}</td>`;
-                
+
                 cols--;
-                if(!cols) {
+                if (!cols) {
                     cols = 3;
                     tbody.appendChild(row);
                     row = document.createElement('tr');
@@ -89,10 +111,6 @@ const handleClients = async focusId => {
             tbody.appendChild(row);
 
         } else {
-
-            remainHours.innerHTML = data.map(({ owe }) => owe).reduce((a, b) => a + b);
-            activeClients.innerHTML = data.map(({ owe }) => owe ? 1 : 0).reduce((a, b) => a + b);
-
             main.innerHTML += `
                 <div class="row">
                     <div class="titleDiv">
@@ -113,6 +131,8 @@ const handleClients = async focusId => {
                 </div>`;
         }
     });
+
+    activeClients.innerHTML = aClientCount;
 };
 
 handleClients();
@@ -162,6 +182,25 @@ const tutored = async id => {
         data.find(obj => obj.id == id).dates.push(date);
         data.find(obj => obj.id == id).tutored += .5;
         handleClients();
+    };
+};
+
+const focusTutored = async id => {
+
+    let date = Date.now();
+
+    let timeRemoved = await fetch(`/api/removetime/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ date }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if (timeRemoved.ok) {
+        data.find(obj => obj.id == id).dates.push(date);
+        data.find(obj => obj.id == id).tutored += .5;
+        handleClients(id);
     };
 };
 
