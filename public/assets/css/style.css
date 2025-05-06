@@ -3,6 +3,7 @@ body {
     margin: 0;
     background: repeating-linear-gradient(35deg, darkgray 10px, black 11px);
     background-attachment: fixed;
+    height: 150vh;
 }
 
 nav {
@@ -188,6 +189,7 @@ td {
 .hourDiv {
     display: flex;
     align-items: flex-start;
+    align-content: start;
     flex-wrap: wrap;
     width: 50%;
 }

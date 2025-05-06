@@ -37,7 +37,7 @@ const handleClients = async focusId => {
                         <h4>Hours Report</h4>
                         <h4>Tutored Dates</h4>
                         <div class="hourDiv">
-                            <table style="width:100%">
+                            <table style="width:100%;margin-bottom:10px">
                                 <thead>
                                     <tr>
                                         <th></th>
@@ -65,14 +65,14 @@ const handleClients = async focusId => {
                                     </tr>
                                 </tbody>
                             </table>
-
-                            <div style="width:100%">
-                                <button style="width:15%;height:40px" onclick="addTime('${id}',0)" class="half">1/2</button>
-                                <button style="width:15%;height:40px" onclick="addTime('${id}',1)" class="one">1</button>
-                                <button style="width:15%;height:40px" onclick="addTime('${id}',2)" class="five">5</button>
-                                <button style="width:15%;height:40px" onclick="addTime('${id}',3)" class="twenty">10</button>
-                                <button style="width:15%;height:40px" onclick="addTime('${id}',4)" class="twenty">20</button>
-                                <button style="width:17.5%;height:40px" onclick="focusTutored('${id}')" class="minusHalf">- 1/2 hr</button>
+                            <div style="width:100%;align-items:center;display:flex;justify-content: space-between;">
+                                <button style="width:12%;height:40px" onclick="addTime('${id}',0)" class="half">1/2</button>
+                                <button style="width:12%;height:40px" onclick="addTime('${id}',1)" class="one">1</button>
+                                <button style="width:12%;height:40px" onclick="addTime('${id}',2)" class="five">5</button>
+                                <button style="width:12%;height:40px" onclick="addTime('${id}',3)" class="twenty">10</button>
+                                <button style="width:12%;height:40px" onclick="addTime('${id}',4)" class="twenty">20</button>
+                                <button style="width:15%;height:40px;font-size:.7vw;background:#0a3781" onclick="payFwd('${id}')" class="minusHalf">Pay Forward 1/2 hour</button>
+                                <button style="width:15%;height:40px;font-size:.7vw" onclick="focusTutored('${id}')" class="minusHalf">- 1/2 hr</button>
                         </div>
                         </div>
 
