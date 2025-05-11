@@ -18,7 +18,7 @@ const handleClients = async focusId => {
         let purchased = hours[0] * 0.5 + hours[1] + hours[2] * 5 + hours[3] * 10 + hours[4] * 20;
         let owe = purchased - dates.length / 2;
 
-        if(owe) aClientCount += 1;
+        if (owe) aClientCount += 1;
 
         if (focusId == id) {
             let dateCount = {};
