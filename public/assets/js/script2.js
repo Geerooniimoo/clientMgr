@@ -919,6 +919,12 @@ const init = d => {
             <label for="activeClients">Active Heroes</label>
             <span id="activeClients">${activeHeros}</span>
         </div>
+        <div id="addHeroDiv">
+            <input placeholder="new hero">
+            <input placeholder="super@heroes.com">
+            <input placeholder="1 (123) 456-7890">
+            <button>Add Hero</button>
+        </div>
     </div>
 
     <table id="table">

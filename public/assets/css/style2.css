@@ -34,7 +34,7 @@ nav {
 }
 
 label {
-    font-size: .9rem;
+    font-size: 1.2rem;
 }
 
 .row {
@@ -170,7 +170,7 @@ th {
     height: 2rem;
     text-align: center;
     padding: 0 0 0 10px;
-    font-size: 1.5vw;
+    font-size: 1.2rem;
     font-weight: 900;
 }
 
@@ -292,27 +292,49 @@ button {
 
 #newClientDiv {
     border-radius: 4px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     background: white;
     display: flex;
     justify-content: space-between;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     border: 2px solid #000;
 }
 
 #newClientDiv > * {
     align-items: center;
     width: 12%;
-    margin: 0 5px;
     border-radius: 0;
     font-size: 1vw;
     text-align: center;
+}
+
+#addHeroDiv {
+    border: 2px solid #000;
+    width: 100%;
+    margin-top: 5px;
+    padding: 5px;
+    background: lightskyblue;
+}
+
+#addHeroDiv input {
+    border: 2px solid #000;
+    height: 1.5rem;
+    text-align: center;
+}
+
+#addHeroDiv button {
+    height: 2rem;
+    border-radius: 0;
+    background: yellow;
+    color: black;
+    font-size: 1.2rem;
 }
 
 #activeClients, #remainHours {
     background: teal;
     border: 2px solid #000;
     justify-content: center;
+    font-size: 1rem;
     color: white;
     padding: 5px;
     width: auto;
