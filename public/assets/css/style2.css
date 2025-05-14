@@ -33,8 +33,8 @@ nav {
     justify-content: space-between;
 }
 
-#labels {
-    border-radius: 8px 8px 0 0;
+label {
+    font-size: .9rem;
 }
 
 .row {
@@ -304,14 +304,13 @@ button {
     align-items: center;
     width: 12%;
     margin: 0 5px;
-    /* border: 1px solid #000; */
     border-radius: 0;
     font-size: 1vw;
     text-align: center;
 }
 
 #activeClients, #remainHours {
-    background: #810a0a;
+    background: teal;
     border: 2px solid #000;
     justify-content: center;
     color: white;
