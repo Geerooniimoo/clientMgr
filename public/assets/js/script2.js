@@ -846,12 +846,14 @@ const ch_order = ({ id, value }) => {
 
     el2.id = parseInt(id);
     el1.id = parseInt(value);
-    data = [el1, el2, ...data.filter(obj => ![el1, el2].includes(obj))].sort((a, b) => a.id - b.id);
+    data = [el1, el2, ...data.filter(obj => ![el1, el2].includes(obj))];
 
     init(data);
 };
 
 const renderRows = d => {
+
+    data = d.sort((a, b) => a.id - b.id);
 
     let i = 0;
     
@@ -860,7 +862,7 @@ const renderRows = d => {
     let rowInterval = setInterval(
         () => {
 
-            let owed = d[i].hours[0]*0.5+d[i].hours[1]+d[i].hours[2]*5+d[i].hours[3]*10+d[i].hours[4]*20 - d[i].tutored.map(t=>t.hours).reduce((a,b)=>a+b);
+            let owed = (d[i].hours[0]*0.5+d[i].hours[1]+d[i].hours[2]*5+d[i].hours[3]*10+d[i].hours[4]*20) - (d[i].tutored.length ? d[i].tutored.map(t=>t.hours).reduce((a,b)=>a+b) : 0);
             
             main.innerHTML += `
             <table>
@@ -897,10 +899,10 @@ const init = d => {
         data.map(obj => obj.hours[3]).reduce((a, b) => a + b) * 10 +
         data.map(obj => obj.hours[4]).reduce((a, b) => a + b) * 20;
 
-    let tutored = data.map(({ tutored }) => tutored.map(({ hours }) => hours).reduce((a, b) => a + b)).reduce((a, b) => a + b);
+    let tutored = data.length ? data.map(({ tutored }) => tutored.length ? tutored.map(({ hours }) => hours).reduce((a, b) => a + b) : 0).reduce((a, b) => a + b) : 0;
 
     let activeHeros = data.map(({ hours, tutored }) =>
-        hours[0] * 0.5 + hours[1] + hours[2] * 5 + hours[3] * 10 + hours[4] * 20 - tutored.map(t => t.hours).reduce((a, b) => a + b) > 0
+        hours[0] * 0.5 + hours[1] + hours[2] * 5 + hours[3] * 10 + hours[4] * 20 - tutored.map(t => t.hours) ? tutored.map(t => t.hours).reduce((a, b) => a + b) > 0 : false
             ? 1
             : 0
     ).reduce((a, b) => a + b);
@@ -920,10 +922,10 @@ const init = d => {
             <span id="activeClients">${activeHeros}</span>
         </div>
         <div id="addHeroDiv">
-            <input placeholder="new hero">
-            <input placeholder="super@heroes.com">
-            <input placeholder="1 (123) 456-7890">
-            <button>Add Hero</button>
+            <input id="heroName" placeholder="Hero's Name">
+            <input id="email" placeholder="super@heroes.com">
+            <input id="number" placeholder="1 (123) 456-7890">
+            <button id="addHero" >Add Hero</button>
         </div>
     </div>
 
@@ -940,14 +942,20 @@ const init = d => {
 
     <main id="main"></main>`;
 
+    document.getElementById('addHero').onclick = () => {
+        if(heroName.value && email.value && number.value) {
+            data = [{id:data.length+1, email: email.value, phone: number.value, name: heroName.value, hours: [0,0,0,0,0], tutored: []}, ... d];
+
+            heroName.value = '';
+             email.value = '';
+             number.value = '';
+
+            renderRows(data);
+        }
+    }
+        
     renderRows(d);
 };
 
-// div>
-//     <input id="newClient" type="text" placeholder="new client">
-//     <input id="newEmail" type="text" placeholder="jDoe@mail.com">
-//     <input id="newNumber" type="text" placeholder="(234) 567-8910">
-//     <button onclick="addClient()">Add Client</button>
-// </div>
-
 init(data);
+
