@@ -856,14 +856,14 @@ const renderRows = d => {
     data = d.sort((a, b) => a.id - b.id);
 
     let i = 0;
-    
+
     main.innerHTML = '';
-    
+
     let rowInterval = setInterval(
         () => {
 
-            let owed = (d[i].hours[0]*0.5+d[i].hours[1]+d[i].hours[2]*5+d[i].hours[3]*10+d[i].hours[4]*20) - (d[i].tutored.length ? d[i].tutored.map(t=>t.hours).reduce((a,b)=>a+b) : 0);
-            
+            let owed = (d[i].hours[0] * 0.5 + d[i].hours[1] + d[i].hours[2] * 5 + d[i].hours[3] * 10 + d[i].hours[4] * 20) - (d[i].tutored.length ? d[i].tutored.map(t => t.hours).reduce((a, b) => a + b) : 0);
+
             main.innerHTML += `
             <table>
                 <tr>
@@ -889,6 +889,26 @@ const renderRows = d => {
             }
         }, 50
     )
+};
+
+const activeHerosFx = () => {
+    let active_Heroes = 0;
+    data.map(obj => {
+        let tutored = 0;
+
+        let purchased =
+            obj.hours[1] +
+            obj.hours[2] * 5 +
+            obj.hours[3] * 10 +
+            obj.hours[4] * 20 +
+            obj.hours[0] * 0.5;
+
+        obj.tutored.map(({ hours }) => tutored += hours);
+
+        active_Heroes += (purchased - tutored) > 0 ? 1 : 0;
+    })
+
+    return active_Heroes;
 };
 
 const init = d => {
@@ -919,7 +939,7 @@ const init = d => {
             <span id="activeClients">${purchased - tutored}
             </span>
             <label for="activeClients">Active Heroes</label>
-            <span id="activeClients">${activeHeros}</span>
+            <span id="activeClients">${activeHerosFx()}</span>
         </div>
         <div id="addHeroDiv">
             <input id="heroName" placeholder="Hero's Name">
@@ -943,17 +963,17 @@ const init = d => {
     <main id="main"></main>`;
 
     document.getElementById('addHero').onclick = () => {
-        if(heroName.value && email.value && number.value) {
-            data = [{id:data.length+1, email: email.value, phone: number.value, name: heroName.value, hours: [0,0,0,0,0], tutored: []}, ... d];
+        if (heroName.value && email.value && number.value) {
+            data = [{ id: data.length + 1, email: email.value, phone: number.value, name: heroName.value, hours: [0, 0, 0, 0, 0], tutored: [] }, ...d];
 
             heroName.value = '';
-             email.value = '';
-             number.value = '';
+            email.value = '';
+            number.value = '';
 
             renderRows(data);
         }
     }
-        
+
     renderRows(d);
 };
 
