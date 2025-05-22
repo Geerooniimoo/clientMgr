@@ -48,22 +48,70 @@ label {
     opacity: .85;
     flex-wrap: wrap;
     border-radius: 0;
-
 }
 
-.row > * {
+.section_2 {
     display: flex;
-    align-self: stretch;
-    justify-content: space-between;
-    font-size: 2vw;
-    font-weight: 900;
-    width: 30%;
+    width: 100%;
+    border: 1px solid black;
+    flex-wrap: wrap;
+    margin: 5px 0px;
+    padding: 5px;
+    background: #dbdbdb;
+    justify-content: space-around;
 }
 
-.remain {
-    background: #bababa;
+.section_2 > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
     border: 1px solid black;
-    padding: 0 27px;
+    padding: 5px;
+    margin-top: 10px;
+    background: navajowhite;
+}
+
+.section_2 > div > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px;
+}
+
+.section_2 > div > div > div:nth-child(odd) {
+    font-weight: 900;
+    background: #406c7e;
+    color: white;
+    border: 1px solid black;
+    align-items: center;
+    padding: 0 5px;
+    font-size: 0.8rem;
+}
+
+.section_2 > div > div > div:nth-child(even) {
+    font-weight: 900;
+    padding: 0px 5px;
+    color: black;
+    border: 1px solid black;
+    margin: 5px 0;
+    background: white;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+.hoursDiv > div > div {
+    width: 3rem;
+    text-align: center;
+}
+
+.hoursDiv > div > div:nth-child(4) {
+    width: 1.2rem;
+}
+
+.hoursDiv > div > div:nth-child(6) {
+    width: 1.2rem;
+    height: 0.9rem;
 }
 
 .titleDiv {
@@ -103,6 +151,7 @@ table {
 
 tr {
     border: 1px solid #000;
+    background: white;
 }
 
 tr td:nth-child(1), tr th:nth-child(1) {
@@ -129,7 +178,8 @@ tr td:nth-child(3), tr th:nth-child(3) {
 }
 
 tr td:nth-child(3) button {
-    background: #a5a59e;
+    background: #eded0059;
+    color: black;
 }
 
 tr td:nth-child(4), tr th:nth-child(4) {
@@ -143,7 +193,7 @@ tr td:nth-child(5), tr th:nth-child(5) {
 }
 
 tr td:nth-child(5) button {
-    background: #b30505;
+    background: #6b0000e3;
 }
 
 tr td:nth-child(6), tr th:nth-child(6) {
@@ -157,10 +207,6 @@ tr td:nth-child(6) {
     text-align: center;
     font-weight: 900;
     font-size: 1.3rem;
-}
-
-tr:nth-child(odd) {
-    background: white;
 }
 
 th {
@@ -282,7 +328,7 @@ td {
 }
 
 button {
-    background: seagreen;
+    background: #406c7e;
     color: white;
     border-radius: 5px;
     font-size: 1.5vw;
@@ -325,7 +371,7 @@ button {
 #addHeroDiv button {
     height: 2rem;
     border-radius: 0;
-    background: yellow;
+    background: #ffffb2;
     color: black;
     font-size: 1.2rem;
 }

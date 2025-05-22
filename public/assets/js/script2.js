@@ -851,6 +851,65 @@ const ch_order = ({ id, value }) => {
     init(data);
 };
 
+const purchase =(i,id) => {
+    data[id-1].hours[i] += 1;
+    init(data);
+};
+
+const renderDetails = id => {
+    
+    if(document.querySelector(`#row_${id}`).children[1]) {
+        document.querySelector(`#row_${id}`).children[1].remove(); 
+        return 
+    };
+
+    let hero = data.find(obj=>obj.id==id);
+    let total = hero.hours[0] * 0.5 + hero.hours[1] + hero.hours[2] * 5 + hero.hours[3] * 10 + hero.hours[4] * 20;
+    
+    document.getElementById(`row_${id}`).innerHTML += '<div class="section_2"></div>';
+
+    let hDiv = document.getElementById(`row_${id}`).children[1];
+    hDiv.innerHTML += `
+        <div>
+            <div>
+                <div>email</div> 
+                <div>${hero.email}</div>
+            </div>
+            <div>
+                <div>1/2 h</div>
+                <div>${hero.hours[0]}</div>
+                <div>1 h</div>
+                <div>${hero.hours[1]}</div>
+                <div>5 hs</div>
+                <div>${hero.hours[2]}</div>
+                <div>10 hs</div>
+                <div>${hero.hours[3]}</div>
+                <div>20 hs</div>
+                <div>${hero.hours[4]}</div>
+                <div>Total</div>
+                <div>${total}</div>
+            </div>
+            <div>
+                <div>Phone</div>
+                <div>${hero.phone}</div>
+            </div>
+        </div>
+        <div class='hoursDiv'></div>
+    `;
+
+    hero.tutored.forEach(obj=>
+        document.getElementById(`row_${id}`).querySelector(".hoursDiv").innerHTML += `
+        <div>
+            <div>DATE</div>
+            <div>${obj.date}</div>
+            <div>HOURS</div>
+            <div>${obj.hours}</div>
+            <div>NOTES</div>
+            <div>${obj.notes}</div>
+        </div>
+    `);
+};
+
 const renderRows = d => {
 
     data = d.sort((a, b) => a.id - b.id);
@@ -865,24 +924,27 @@ const renderRows = d => {
             let owed = (d[i].hours[0] * 0.5 + d[i].hours[1] + d[i].hours[2] * 5 + d[i].hours[3] * 10 + d[i].hours[4] * 20) - (d[i].tutored.length ? d[i].tutored.map(t => t.hours).reduce((a, b) => a + b) : 0);
 
             main.innerHTML += `
-            <table>
-                <tr>
-                    <td><input id="${d[i].id}" onchange="ch_order(this)" value="${d[i].id}"></td>
-                    <td>${d[i].name}</td>
-                    <td><button>Details</button></td>
-                    <td>
-                        <button>1/2</button>
-                        <button>1</button>
-                        <button>5</button>
-                        <button>10</button>
-                        <button>20</button>
-                    </td>
-                    <td>
-                        <button>- 1/2 hour</button>
-                    </td>
-                    <td>${owed}</td>
-                </tr>
-            </table>`;
+                <div id="row_${d[i].id}" class="row">
+                    <table>
+                        <tr>
+                            <td><input id="${d[i].id}" onchange="ch_order(this)" value="${d[i].id}"></td>
+                            <td>${d[i].name}</td>
+                            <td><button onclick="renderDetails(${d[i].id})">Details</button></td>
+                            <td>
+                                <button onclick="purchase(0, ${d[i].id})">1/2</button>
+                                <button onclick="purchase(1, ${d[i].id})">1</button>
+                                <button onclick="purchase(2, ${d[i].id})">5</button>
+                                <button onclick="purchase(3, ${d[i].id})">10</button>
+                                <button onclick="purchase(4, ${d[i].id})">20</button>
+                            </td>
+                            <td>
+                                <button>- 1/2 hour</button>
+                            </td>
+                            <td>${owed}</td>
+                        </tr>
+                    </table>
+                    
+                </div>`;
             i++;
             if (i == d.length) {
                 clearInterval(rowInterval)
@@ -954,7 +1016,7 @@ const init = d => {
             <th>order</th>
             <th>Name</th>
             <th>Details</th>
-            <th>Hours Purchased</th>
+            <th>Purchase Hours</th>
             <th>Tutored Time</th>
             <th>Time Owed</th>
         </thead>
