@@ -35,19 +35,14 @@ nav {
 
 label {
     font-size: 1.2rem;
+    font-weight: 900;
 }
 
 .row {
-    padding: 5px;
     display: flex;
     flex-basis: 100%;
-    border-radius: 4px;
-    background: white;
-    border: 1px solid #000;
     justify-content: space-between;
-    opacity: .85;
     flex-wrap: wrap;
-    border-radius: 0;
 }
 
 .section_2 {
@@ -59,6 +54,10 @@ label {
     padding: 5px;
     background: #dbdbdb;
     justify-content: space-around;
+    overflow: hidden;
+    transition: height 2s ease-in-out;
+    position: fixed;
+    opacity: 0;
 }
 
 .section_2 > div {
@@ -162,6 +161,7 @@ tr td:nth-child(1), tr th:nth-child(1) {
 tr td:nth-child(1) input {
     width: 25px;
     text-align: center;
+    font-weight: 900;
 }
 
 tr td:nth-child(2), tr th:nth-child(2) {
@@ -338,12 +338,9 @@ button {
 
 #newClientDiv {
     border-radius: 4px;
-    margin-bottom: 10px;
-    background: white;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    border: 2px solid #000;
 }
 
 #newClientDiv > * {
@@ -359,7 +356,9 @@ button {
     width: 100%;
     margin-top: 5px;
     padding: 5px;
-    background: lightskyblue;
+    background: #c4c4c4;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 #addHeroDiv input {
@@ -384,12 +383,15 @@ button {
     color: white;
     padding: 5px;
     width: auto;
+    font-weight: 900;
 }
 
 #summary {
     width: 100%;
     border: 2px solid #000;
-    background: lightskyblue;
+    background: #c4c4c4;
     padding: 5px;
     font-size: 1.2vw;
+    display: flex;
+    justify-content: space-around;
 }

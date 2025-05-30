@@ -859,7 +859,8 @@ const purchase =(i,id) => {
 const renderDetails = id => {
     
     if(document.querySelector(`#row_${id}`).children[1]) {
-        document.querySelector(`#row_${id}`).children[1].remove(); 
+        document.querySelector(`#row_${id}`).children[1].style.height = 0;
+        setTimeout(()=>{document.querySelector(`#row_${id}`).children[1].remove()}, 2000); 
         return 
     };
 
@@ -867,8 +868,9 @@ const renderDetails = id => {
     let total = hero.hours[0] * 0.5 + hero.hours[1] + hero.hours[2] * 5 + hero.hours[3] * 10 + hero.hours[4] * 20;
     
     document.getElementById(`row_${id}`).innerHTML += '<div class="section_2"></div>';
-
-    let hDiv = document.getElementById(`row_${id}`).children[1];
+    
+    hDiv = document.querySelector(`#row_${id}`).children[1];
+    
     hDiv.innerHTML += `
         <div>
             <div>
@@ -908,6 +910,12 @@ const renderDetails = id => {
             <div>${obj.notes}</div>
         </div>
     `);
+    
+    h = `${hDiv.getBoundingClientRect().height}px`;
+    hDiv.style.height = 0;
+    hDiv.style.position = 'relative';
+    hDiv.style.opacity = 1;
+    setTimeout(()=>{hDiv.style.height = h;},1);
 };
 
 const renderRows = d => {
