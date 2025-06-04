@@ -841,17 +841,34 @@ const fx = i => {
 };
 
 const ch_order = ({ id, value }) => {
-    let el1 = data.find(obj => obj.id == id);
-    let el2 = data.find(obj => obj.id == value);
+    let el = data.find(obj=>obj.id==id);
+    data = data.filter(obj=>obj!=el);
+    
+    el.id = value;
 
-    el2.id = parseInt(id);
-    el1.id = parseInt(value);
-    data = [el1, el2, ...data.filter(obj => ![el1, el2].includes(obj))];
+    data = data.map(obj=>{
+        let id = obj.id >= value ? obj.id + 1 : obj.id;
+        return { ...obj, id };
+    });
 
+    data.push(el);
     init(data);
 };
 
+// const ch_order = ({ id, value }) => {
+//     let el1 = data.find(obj => obj.id == id);
+//     let el2 = data.find(obj => obj.id == value);
+
+//     el2.id = parseInt(id);
+//     el1.id = parseInt(value);
+//     data = [el1, el2, ...data.filter(obj => ![el1, el2].includes(obj))];
+
+//     init(data);
+// };
+
 const purchase =(i,id) => {
+    console.log('id: ',id);
+    
     data[id-1].hours[i] += 1;
     init(data);
 };
@@ -860,7 +877,7 @@ const renderDetails = id => {
     
     if(document.querySelector(`#row_${id}`).children[1]) {
         document.querySelector(`#row_${id}`).children[1].style.height = 0;
-        setTimeout(()=>{document.querySelector(`#row_${id}`).children[1].remove()}, 2000); 
+        setTimeout(()=>{document.querySelector(`#row_${id}`).children[1].remove()}, 1000); 
         return 
     };
 
@@ -919,16 +936,15 @@ const renderDetails = id => {
 };
 
 const renderRows = d => {
+    
+    let i = 0;
 
     data = d.sort((a, b) => a.id - b.id);
-
-    let i = 0;
 
     main.innerHTML = '';
 
     let rowInterval = setInterval(
         () => {
-
             let owed = (d[i].hours[0] * 0.5 + d[i].hours[1] + d[i].hours[2] * 5 + d[i].hours[3] * 10 + d[i].hours[4] * 20) - (d[i].tutored.length ? d[i].tutored.map(t => t.hours).reduce((a, b) => a + b) : 0);
 
             main.innerHTML += `
@@ -983,19 +999,14 @@ const activeHerosFx = () => {
 
 const init = d => {
 
-    let purchased = data.map(obj => obj.hours[0]).reduce((a, b) => a + b) * .5 +
+    let purchased = 
         data.map(obj => obj.hours[1]).reduce((a, b) => a + b) +
         data.map(obj => obj.hours[2]).reduce((a, b) => a + b) * 5 +
         data.map(obj => obj.hours[3]).reduce((a, b) => a + b) * 10 +
+        data.map(obj => obj.hours[0]).reduce((a, b) => a + b) * .5 +
         data.map(obj => obj.hours[4]).reduce((a, b) => a + b) * 20;
 
     let tutored = data.length ? data.map(({ tutored }) => tutored.length ? tutored.map(({ hours }) => hours).reduce((a, b) => a + b) : 0).reduce((a, b) => a + b) : 0;
-
-    let activeHeros = data.map(({ hours, tutored }) =>
-        hours[0] * 0.5 + hours[1] + hours[2] * 5 + hours[3] * 10 + hours[4] * 20 - tutored.map(t => t.hours) ? tutored.map(t => t.hours).reduce((a, b) => a + b) > 0 : false
-            ? 1
-            : 0
-    ).reduce((a, b) => a + b);
 
     container.innerHTML = `
     <div id="newClientDiv" class="row">
@@ -1040,7 +1051,7 @@ const init = d => {
             email.value = '';
             number.value = '';
 
-            renderRows(data);
+            ch_order({id:data.length,value:1})
         }
     }
 
