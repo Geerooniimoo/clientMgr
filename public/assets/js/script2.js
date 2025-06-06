@@ -954,7 +954,7 @@ const renderRows = d => {
                         <td>
                             <button onclick="tutorFx(${d[i].id})">- 1/2 hour</button>
                         </td>
-                        <td>${owed}</td>
+                        <td class='owed'>${owed}</td>
                     </tr>
                 </table>
             </div>`;
@@ -981,44 +981,82 @@ const activeHerosFx = () => {
     return active_Heroes;
 };
 
-const handleNotes = ({value},i) => {
-    data[i].tutored[data[i].tutored.length-1].notes = value;
+const handleNotes = ({ value }, i) => {
+    data[i].tutored[data[i].tutored.length - 1].notes = value;
 };
 
-const handleSubmit = (e,i) => {
-    document.getElementById('tutorDiv').remove();
-
-    console.log(e.value);
-    
+const handleSubmit = (e, i) => {
+    document.getElementById('tutorDiv').style.height = 0;
+    setTimeout(() => document.getElementById('tutorDiv').remove(), 1000);
 };
 
 const tutorFx = id => {
 
     let hourIndex;
     let today = new Date().toLocaleDateString();
-    let dataIndex = data.indexOf(data.find(obj=>obj.id==id));
-    
-    if(data[dataIndex].tutored.find(({date})=>date==today) ) {
-        hourIndex = data[dataIndex].tutored.map(({date})=>date).indexOf(today);
+    let dataIndex = data.indexOf(data.find(obj => obj.id == id));
+
+    if (data[dataIndex].tutored.find(({ date }) => date == today)) {
+        hourIndex = data[dataIndex].tutored.map(({ date }) => date).indexOf(today);
         data[dataIndex].tutored[hourIndex].hours += 0.5;
     } else {
         data[dataIndex].tutored.push({ date: today, hours: 0.5, notes: '' });
         hourIndex = data[dataIndex].tutored.length - 1;
     };
-    
-    if(document.getElementById('tutorDiv')) tutorDiv.remove();
 
-    document.getElementById(`row_${id}`).innerHTML += `
-    <div id='tutorDiv'>
-        <h3>${new Date().toDateString()}</h3>
-        <div class='tutorInnerDiv'>
-            <h4>Hours Tutored Today:</h4>
-            <h4>${data[dataIndex].tutored[hourIndex].hours}</h4>
-        </div>
-        <label>Notes</label>
-        <textarea onchange="handleNotes(this,${dataIndex})">${data[dataIndex].tutored[hourIndex].notes}</textarea>
-        <button onclick='handleSubmit(this,${dataIndex})'>Submit</button>
-    </div>`;
+    let tutored = data[dataIndex].tutored[hourIndex].hours;
+    let owed = parseFloat(document.getElementById(`row_${id}`).querySelector('.owed').innerText) - tutored;
+
+    if (
+
+        document.getElementById('tutorDiv') &&
+        document.getElementById('tutorDiv').parentElement.id.split('_')[1] != id
+
+    ) {
+
+        tutorDiv.style.height = 0;
+        setTimeout(() => {
+            tutorDiv.remove()
+            document.getElementById(`row_${id}`).innerHTML += `
+            <div id='tutorDiv'>
+                <table class='tutorInnerDiv'>
+                    <tbody>
+                        <tr><td colspan='2'"><h3>${new Date().toDateString()}</h3></td></tr>
+                        <tr><td><h4>Hours Tutored Today</h4></td><td id='tutorId'>${tutored}</td></tr>
+                        <tr><td><h4>Total Hours Owed </h4></td><td id='oweId'>${owed}</td></tr>
+                        <tr><td colspan='2'><label>Notes</label></td></tr>
+                        <tr><td colspan='2'><textarea onchange="handleNotes(this,${dataIndex})">${data[dataIndex].tutored[hourIndex].notes}</textarea></td></tr>
+                        <tr><td colspan='2'><button onclick='handleSubmit(this,${dataIndex})'>Submit</button></td></tr>
+                    </tbody>
+                </table>
+            </div>`;
+            setTimeout(() => document.getElementById('tutorDiv').style.height = '250px', 1);
+
+        }, 1100);
+
+    } else if (document.getElementById('tutorDiv')) {
+
+        document.getElementById('tutorId').innerText = tutored;
+        document.getElementById('oweId').innerText = owed;
+
+    } else {
+
+        document.getElementById(`row_${id}`).innerHTML += `
+            <div id='tutorDiv'>
+                <table class='tutorInnerDiv'>
+                    <tbody>
+                        <tr><td colspan='2'"><h3>${new Date().toDateString()}</h3></td></tr>
+                        <tr><td><h4>Hours Tutored Today</h4></td><td id='tutorId'>${tutored}</td></tr>
+                        <tr><td><h4>Total Hours Owed </h4></td><td id='oweId'>${owed}</td></tr>
+                        <tr><td colspan='2'><label>Notes</label></td></tr>
+                        <tr><td colspan='2'><textarea onchange="handleNotes(this,${dataIndex})">${data[dataIndex].tutored[hourIndex].notes}</textarea></td></tr>
+                        <tr><td colspan='2'><button onclick='handleSubmit(this,${dataIndex})'>Submit</button></td></tr>
+                    </tbody>
+                </table>
+            </div>`;
+        setTimeout(() => document.getElementById('tutorDiv').style.height = '250px', 1);
+
+    }
 };
 
 const init = d => {

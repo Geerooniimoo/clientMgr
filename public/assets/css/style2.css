@@ -6,7 +6,6 @@ body {
     margin: 0;
     background: repeating-linear-gradient(35deg, darkgray 10px, black 11px);
     background-attachment: fixed;
-    height: 150vh;
 }
 
 nav {
@@ -49,17 +48,33 @@ label {
 }
 
 #tutorDiv {
-    background: white;
     width: 100%;
-    margin: 0 auto;
-    padding: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
 }
 
 #tutorDiv * {
     margin: 5px;
+}
+
+#tutorDiv table {
+    white-space: nowrap;
+}
+
+#tutorDiv table tbody {
+    min-width: 200px;
+    width: 350px;
+}
+
+#tutorDiv textarea {
+    margin: 5px;
+    padding: 0;
+    width: 95%;
 }
 
 .tutorInnerDiv {
@@ -240,14 +255,6 @@ th {
     font-size: 1.2rem;
     font-weight: 900;
 }
-
-td {
-    padding: 0 0 0 10px;
-    border: 1px solid #000;
-    font-size: 1vw;
-}
-
-
 
 .datesDiv > span:nth-child(odd) {
     font-size: 1vw;
