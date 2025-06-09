@@ -93,7 +93,11 @@ label {
     justify-content: space-around;
     overflow: hidden;
     position: fixed;
-    opacity: 0;
+    /* opacity: 0; */
+}
+
+#detailHead {
+    height: 30px;
 }
 
 .section_2 > div {

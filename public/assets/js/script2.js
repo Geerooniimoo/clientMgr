@@ -1,806 +1,4 @@
-let data =
-    [
-        {
-            "id": 1,
-            "email": "jasoncano0509@gmail.com",
-            "phone": "1(555) 555-5555",
-            "name": "Jason Cano",
-            "hours": [0, 1, 1, 4, 10],
-            "tutored": [
-                { "date": "8/1/2023", "hours": 1, "notes": "" },
-                { "date": "8/3/2023", "hours": 2, "notes": "" },
-                { "date": "8/6/2023", "hours": 1, "notes": "" },
-                { "date": "8/7/2023", "hours": 1, "notes": "" },
-                { "date": "8/8/2023", "hours": 3, "notes": "" },
-                { "date": "8/9/2023", "hours": 3, "notes": "" },
-                { "date": "8/10/2023", "hours": 2, "notes": "" },
-                { "date": "8/14/2023", "hours": 1, "notes": "" },
-                { "date": "8/22/2023", "hours": 3, "notes": "" },
-                { "date": "8/26/2023", "hours": 3, "notes": "" },
-                { "date": "8/27/2023", "hours": 2, "notes": "" },
-                { "date": "8/28/2023", "hours": 1, "notes": "" },
-                { "date": "8/30/2023", "hours": 4, "notes": "" },
-                { "date": "8/31/2023", "hours": 1, "notes": "" },
-                { "date": "9/1/2023", "hours": 3, "notes": "" },
-                { "date": "9/3/2023", "hours": 3, "notes": "" },
-                { "date": "9/4/2023", "hours": 2, "notes": "" },
-                { "date": "9/5/2023", "hours": 5, "notes": "" },
-                { "date": "9/6/2023", "hours": 5, "notes": "" },
-                { "date": "9/7/2023", "hours": 9.5, "notes": "" },
-                { "date": "9/11/2023", "hours": 2, "notes": "" },
-                { "date": "9/13/2023", "hours": 2, "notes": "" },
-                { "date": "9/15/2023", "hours": 2, "notes": "" },
-                { "date": "9/18/2023", "hours": 2, "notes": "" },
-                { "date": "9/20/2023", "hours": 1, "notes": "" },
-                { "date": "9/22/2023", "hours": 1.5, "notes": "" },
-                { "date": "9/25/2023", "hours": 2, "notes": "" },
-                { "date": "9/27/2023", "hours": 2, "notes": "" },
-                { "date": "9/29/2023", "hours": 2, "notes": "" },
-                { "date": "10/2/2023", "hours": 2, "notes": "" },
-                { "date": "10/4/2023", "hours": 2, "notes": "" },
-                { "date": "10/6/2023", "hours": 2, "notes": "" },
-                { "date": "10/9/2023", "hours": 3, "notes": "" },
-                { "date": "10/13/2023", "hours": 2, "notes": "" },
-                { "date": "10/16/2023", "hours": 2, "notes": "" },
-                { "date": "10/18/2023", "hours": 1, "notes": "" },
-                { "date": "10/19/2023", "hours": 1, "notes": "" },
-                { "date": "10/22/2023", "hours": 0.5, "notes": "" },
-                { "date": "10/24/2023", "hours": 1, "notes": "" },
-                { "date": "10/25/2023", "hours": 1, "notes": "" },
-                { "date": "10/27/2023", "hours": 0.5, "notes": "" },
-                { "date": "10/30/2023", "hours": 1.5, "notes": "" },
-                { "date": "11/1/2023", "hours": 1, "notes": "" },
-                { "date": "11/3/2023", "hours": 2, "notes": "" },
-                { "date": "11/6/2023", "hours": 2.5, "notes": "" },
-                { "date": "11/9/2023", "hours": 2, "notes": "" },
-                { "date": "11/14/2023", "hours": 2, "notes": "" },
-                { "date": "11/15/2023", "hours": 1, "notes": "" },
-                { "date": "11/17/2023", "hours": 1.5, "notes": "" },
-                { "date": "11/20/2023", "hours": 1, "notes": "" },
-                { "date": "11/22/2023", "hours": 1.5, "notes": "" },
-                { "date": "11/24/2023", "hours": 0.5, "notes": "" },
-                { "date": "11/27/2023", "hours": 1.5, "notes": "" },
-                { "date": "11/29/2023", "hours": 1, "notes": "" },
-                { "date": "12/1/2023", "hours": 1, "notes": "" },
-                { "date": "12/4/2023", "hours": 1, "notes": "" },
-                { "date": "12/6/2023", "hours": 1, "notes": "" },
-                { "date": "12/8/2023", "hours": 1, "notes": "" },
-                { "date": "12/13/2023", "hours": 1.5, "notes": "" },
-                { "date": "12/20/2023", "hours": 1, "notes": "" },
-                { "date": "1/7/2024", "hours": 1, "notes": "" },
-                { "date": "1/8/2024", "hours": 1, "notes": "" },
-                { "date": "1/9/2024", "hours": 1, "notes": "" },
-                { "date": "2/1/2024", "hours": 1, "notes": "" },
-                { "date": "2/9/2024", "hours": 1, "notes": "" },
-                { "date": "2/12/2024", "hours": 1, "notes": "" },
-                { "date": "2/13/2024", "hours": 1, "notes": "" },
-                { "date": "2/15/2024", "hours": 1, "notes": "" },
-                { "date": "6/21/2024", "hours": 1, "notes": "" },
-                { "date": "6/28/2024", "hours": 1, "notes": "" },
-                { "date": "12/8/2024", "hours": 1, "notes": "" },
-                { "date": "12/10/2024", "hours": 1, "notes": "" },
-                { "date": "12/11/2024", "hours": 1, "notes": "" },
-                { "date": "12/13/2024", "hours": 1, "notes": "" },
-                { "date": "12/17/2024", "hours": 1, "notes": "" },
-                { "date": "12/19/2024", "hours": 1, "notes": "" },
-                { "date": "12/20/2024", "hours": 1, "notes": "" },
-                { "date": "12/24/2024", "hours": 1, "notes": "" },
-                { "date": "12/26/2024", "hours": 0.5, "notes": "" },
-                { "date": "12/27/2024", "hours": 1, "notes": "" },
-                { "date": "12/28/2024", "hours": 1, "notes": "" },
-                { "date": "12/29/2024", "hours": 2, "notes": "" },
-                { "date": "12/31/2024", "hours": 2, "notes": "" },
-                { "date": "1/2/2025", "hours": 2, "notes": "" },
-                { "date": "1/3/2025", "hours": 1, "notes": "" },
-                { "date": "1/4/2025", "hours": 2, "notes": "" },
-                { "date": "1/7/2025", "hours": 2, "notes": "" },
-                { "date": "1/8/2025", "hours": 1, "notes": "" },
-                { "date": "1/9/2025", "hours": 2, "notes": "" },
-                { "date": "1/10/2025", "hours": 1, "notes": "" },
-                { "date": "1/11/2025", "hours": 2, "notes": "" },
-                { "date": "1/14/2025", "hours": 1, "notes": "" },
-                { "date": "1/15/2025", "hours": 2, "notes": "" },
-                { "date": "1/18/2025", "hours": 2, "notes": "" },
-                { "date": "1/21/2025", "hours": 2, "notes": "" },
-                { "date": "1/23/2025", "hours": 2, "notes": "" },
-                { "date": "1/24/2025", "hours": 2, "notes": "" },
-                { "date": "1/25/2025", "hours": 2, "notes": "" },
-                { "date": "1/28/2025", "hours": 2, "notes": "" },
-                { "date": "1/30/2025", "hours": 2, "notes": "" },
-                { "date": "2/3/2025", "hours": 2, "notes": "" },
-                { "date": "2/4/2025", "hours": 2, "notes": "" },
-                { "date": "2/5/2025", "hours": 2, "notes": "" },
-                { "date": "2/6/2025", "hours": 1, "notes": "" },
-                { "date": "2/7/2025", "hours": 1, "notes": "" },
-                { "date": "2/10/2025", "hours": 2, "notes": "" },
-                { "date": "2/11/2025", "hours": 2, "notes": "" },
-                { "date": "2/12/2025", "hours": 2, "notes": "" },
-                { "date": "2/13/2025", "hours": 1, "notes": "" },
-                { "date": "2/14/2025", "hours": 2, "notes": "" },
-                { "date": "2/15/2025", "hours": 1, "notes": "" },
-                { "date": "2/17/2025", "hours": 1, "notes": "" },
-                { "date": "2/18/2025", "hours": 2, "notes": "" },
-                { "date": "2/19/2025", "hours": 2, "notes": "" },
-                { "date": "2/20/2025", "hours": 1, "notes": "" },
-                { "date": "2/21/2025", "hours": 1, "notes": "" },
-                { "date": "2/24/2025", "hours": 1, "notes": "" },
-                { "date": "2/25/2025", "hours": 0.5, "notes": "" },
-                { "date": "2/26/2025", "hours": 1, "notes": "" },
-                { "date": "2/27/2025", "hours": 1, "notes": "" },
-                { "date": "2/28/2025", "hours": 1, "notes": "" },
-                { "date": "3/1/2025", "hours": 0.5, "notes": "" },
-                { "date": "3/3/2025", "hours": 2, "notes": "" },
-                { "date": "3/4/2025", "hours": 1, "notes": "" },
-                { "date": "3/5/2025", "hours": 2, "notes": "" },
-                { "date": "3/9/2025", "hours": 2, "notes": "" },
-                { "date": "3/10/2025", "hours": 1, "notes": "" },
-                { "date": "3/11/2025", "hours": 2, "notes": "" },
-                { "date": "3/12/2025", "hours": 2, "notes": "" },
-                { "date": "3/13/2025", "hours": 2, "notes": "" },
-                { "date": "3/14/2025", "hours": 1, "notes": "" },
-                { "date": "3/15/2025", "hours": 2, "notes": "" },
-                { "date": "3/16/2025", "hours": 1, "notes": "" },
-                { "date": "3/17/2025", "hours": 1, "notes": "" },
-                { "date": "3/18/2025", "hours": 1, "notes": "" },
-                { "date": "3/19/2025", "hours": 1, "notes": "" },
-                { "date": "3/20/2025", "hours": 1, "notes": "" },
-                { "date": "3/22/2025", "hours": 2, "notes": "" },
-                { "date": "3/24/2025", "hours": 2, "notes": "" },
-                { "date": "3/25/2025", "hours": 1, "notes": "" },
-                { "date": "3/26/2025", "hours": 2, "notes": "" },
-                { "date": "4/1/2025", "hours": 1, "notes": "" },
-                { "date": "4/2/2025", "hours": 1, "notes": "" },
-                { "date": "4/4/2025", "hours": 2, "notes": "" },
-                { "date": "4/5/2025", "hours": 1, "notes": "" },
-                { "date": "4/8/2025", "hours": 2, "notes": "" },
-                { "date": "4/10/2025", "hours": 1, "notes": "" },
-                { "date": "4/11/2025", "hours": 2, "notes": "" },
-                { "date": "4/12/2025", "hours": 1, "notes": "" },
-                { "date": "4/15/2025", "hours": 1, "notes": "" },
-                { "date": "4/16/2025", "hours": 1, "notes": "" },
-                { "date": "5/5/2025", "hours": 2, "notes": "" },
-                { "date": "5/6/2025", "hours": 1, "notes": "" },
-                { "date": "5/7/2025", "hours": 2, "notes": "" },
-                { "date": "5/8/2025", "hours": 1, "notes": "" }
-            ]
-        },
-        {
-            "id": 2,
-            "email": "jacob@goldenlightrealty.com",
-            "phone": "(832) 605-0398",
-            "name": "Yakup Altinisik",
-            "hours": [0, 3, 0, 24, 0],
-            "tutored": [
-                { "date": "3/15/2024", "hours": 1, "notes": "" },
-                { "date": "3/17/2024", "hours": 3, "notes": "" },
-                { "date": "3/19/2024", "hours": 2, "notes": "" },
-                { "date": "3/21/2024", "hours": 1, "notes": "" },
-                { "date": "3/22/2024", "hours": 2, "notes": "" },
-                { "date": "3/24/2024", "hours": 1.5, "notes": "" },
-                { "date": "3/25/2024", "hours": 1, "notes": "" },
-                { "date": "3/26/2024", "hours": 2, "notes": "" },
-                { "date": "3/27/2024", "hours": 1, "notes": "" },
-                { "date": "3/29/2024", "hours": 3.5, "notes": "" },
-                { "date": "4/1/2024", "hours": 1, "notes": "" },
-                { "date": "4/2/2024", "hours": 1, "notes": "" },
-                { "date": "4/3/2024", "hours": 1, "notes": "" },
-                { "date": "4/4/2024", "hours": 1, "notes": "" },
-                { "date": "4/8/2024", "hours": 1, "notes": "" },
-                { "date": "4/9/2024", "hours": 1, "notes": "" },
-                { "date": "4/11/2024", "hours": 2, "notes": "" },
-                { "date": "4/12/2024", "hours": 1, "notes": "" },
-                { "date": "4/14/2024", "hours": 2, "notes": "" },
-                { "date": "4/15/2024", "hours": 1, "notes": "" },
-                { "date": "4/16/2024", "hours": 2, "notes": "" },
-                { "date": "4/17/2024", "hours": 4, "notes": "" },
-                { "date": "4/18/2024", "hours": 3, "notes": "" },
-                { "date": "4/19/2024", "hours": 1, "notes": "" },
-                { "date": "4/22/2024", "hours": 1, "notes": "" },
-                { "date": "4/24/2024", "hours": 1, "notes": "" },
-                { "date": "4/25/2024", "hours": 1, "notes": "" },
-                { "date": "4/29/2024", "hours": 3, "notes": "" },
-                { "date": "4/30/2024", "hours": 2, "notes": "" },
-                { "date": "5/2/2024", "hours": 2, "notes": "" },
-                { "date": "5/3/2024", "hours": 2.5, "notes": "" },
-                { "date": "5/6/2024", "hours": 1, "notes": "" },
-                { "date": "5/7/2024", "hours": 1, "notes": "" },
-                { "date": "5/8/2024", "hours": 1, "notes": "" },
-                { "date": "5/9/2024", "hours": 1, "notes": "" },
-                { "date": "5/10/2024", "hours": 1, "notes": "" },
-                { "date": "5/13/2024", "hours": 1, "notes": "" },
-                { "date": "5/14/2024", "hours": 1, "notes": "" },
-                { "date": "5/16/2024", "hours": 1.5, "notes": "" },
-                { "date": "5/20/2024", "hours": 1, "notes": "" },
-                { "date": "5/21/2024", "hours": 1, "notes": "" },
-                { "date": "5/22/2024", "hours": 2, "notes": "" },
-                { "date": "5/23/2024", "hours": 1, "notes": "" },
-                { "date": "5/24/2024", "hours": 2.5, "notes": "" },
-                { "date": "5/28/2024", "hours": 1, "notes": "" },
-                { "date": "5/30/2024", "hours": 1, "notes": "" },
-                { "date": "5/31/2024", "hours": 1.5, "notes": "" },
-                { "date": "6/3/2024", "hours": 1, "notes": "" },
-                { "date": "6/4/2024", "hours": 1, "notes": "" },
-                { "date": "6/5/2024", "hours": 1, "notes": "" },
-                { "date": "6/7/2024", "hours": 2.5, "notes": "" },
-                { "date": "6/8/2024", "hours": 3.5, "notes": "" },
-                { "date": "6/9/2024", "hours": 3.5, "notes": "" },
-                { "date": "6/10/2024", "hours": 4, "notes": "" },
-                { "date": "6/11/2024", "hours": 1, "notes": "" },
-                { "date": "6/13/2024", "hours": 2, "notes": "" },
-                { "date": "6/14/2024", "hours": 1, "notes": "" },
-                { "date": "6/16/2024", "hours": 2, "notes": "" },
-                { "date": "7/15/2024", "hours": 1, "notes": "" },
-                { "date": "7/16/2024", "hours": 1, "notes": "" },
-                { "date": "7/19/2024", "hours": 1, "notes": "" },
-                { "date": "7/29/2024", "hours": 1, "notes": "" },
-                { "date": "7/31/2024", "hours": 1, "notes": "" },
-                { "date": "8/1/2024", "hours": 1, "notes": "" },
-                { "date": "8/2/2024", "hours": 1, "notes": "" },
-                { "date": "8/6/2024", "hours": 1, "notes": "" },
-                { "date": "8/12/2024", "hours": 1, "notes": "" },
-                { "date": "8/13/2024", "hours": 1, "notes": "" },
-                { "date": "8/15/2024", "hours": 1.5, "notes": "" },
-                { "date": "8/16/2024", "hours": 1, "notes": "" },
-                { "date": "8/18/2024", "hours": 1, "notes": "" },
-                { "date": "8/26/2024", "hours": 1, "notes": "" },
-                { "date": "8/27/2024", "hours": 1, "notes": "" },
-                { "date": "8/28/2024", "hours": 1.5, "notes": "" },
-                { "date": "9/16/2024", "hours": 2, "notes": "" },
-                { "date": "9/17/2024", "hours": 1, "notes": "" },
-                { "date": "9/18/2024", "hours": 1.5, "notes": "" },
-                { "date": "9/19/2024", "hours": 1, "notes": "" },
-                { "date": "9/20/2024", "hours": 1, "notes": "" },
-                { "date": "9/22/2024", "hours": 1.5, "notes": "" },
-                { "date": "9/23/2024", "hours": 1, "notes": "" },
-                { "date": "9/24/2024", "hours": 1, "notes": "" },
-                { "date": "9/25/2024", "hours": 1, "notes": "" },
-                { "date": "9/26/2024", "hours": 1.5, "notes": "" },
-                { "date": "9/27/2024", "hours": 1.5, "notes": "" },
-                { "date": "9/28/2024", "hours": 2, "notes": "" },
-                { "date": "9/29/2024", "hours": 2, "notes": "" },
-                { "date": "9/30/2024", "hours": 1.5, "notes": "" },
-                { "date": "10/4/2024", "hours": 2, "notes": "" },
-                { "date": "10/6/2024", "hours": 2, "notes": "" },
-                { "date": "10/7/2024", "hours": 2, "notes": "" },
-                { "date": "10/8/2024", "hours": 2, "notes": "" },
-                { "date": "10/10/2024", "hours": 2, "notes": "" },
-                { "date": "10/11/2024", "hours": 2, "notes": "" },
-                { "date": "10/12/2024", "hours": 1, "notes": "" },
-                { "date": "10/13/2024", "hours": 1, "notes": "" },
-                { "date": "10/14/2024", "hours": 2, "notes": "" },
-                { "date": "10/15/2024", "hours": 2, "notes": "" },
-                { "date": "10/18/2024", "hours": 2, "notes": "" },
-                { "date": "10/19/2024", "hours": 1, "notes": "" },
-                { "date": "10/20/2024", "hours": 1, "notes": "" },
-                { "date": "10/21/2024", "hours": 2, "notes": "" },
-                { "date": "10/22/2024", "hours": 2, "notes": "" },
-                { "date": "10/23/2024", "hours": 2, "notes": "" },
-                { "date": "10/24/2024", "hours": 2, "notes": "" },
-                { "date": "10/25/2024", "hours": 2, "notes": "" },
-                { "date": "10/28/2024", "hours": 2, "notes": "" },
-                { "date": "10/29/2024", "hours": 2, "notes": "" },
-                { "date": "10/30/2024", "hours": 2, "notes": "" },
-                { "date": "10/31/2024", "hours": 2, "notes": "" },
-                { "date": "11/25/2024", "hours": 2, "notes": "" },
-                { "date": "11/26/2024", "hours": 2, "notes": "" },
-                { "date": "11/27/2024", "hours": 1, "notes": "" },
-                { "date": "11/30/2024", "hours": 1, "notes": "" },
-                { "date": "12/1/2024", "hours": 1, "notes": "" },
-                { "date": "12/2/2024", "hours": 2, "notes": "" },
-                { "date": "12/3/2024", "hours": 1, "notes": "" },
-                { "date": "12/5/2024", "hours": 3, "notes": "" },
-                { "date": "12/10/2024", "hours": 3, "notes": "" },
-                { "date": "12/11/2024", "hours": 1, "notes": "" },
-                { "date": "12/13/2024", "hours": 0.5, "notes": "" },
-                { "date": "12/14/2024", "hours": 2, "notes": "" },
-                { "date": "12/15/2024", "hours": 0.5, "notes": "" },
-                { "date": "12/16/2024", "hours": 1, "notes": "" },
-                { "date": "12/17/2024", "hours": 2, "notes": "" },
-                { "date": "12/18/2024", "hours": 1, "notes": "" },
-                { "date": "12/19/2024", "hours": 3, "notes": "" },
-                { "date": "12/20/2024", "hours": 1, "notes": "" },
-                { "date": "12/21/2024", "hours": 1, "notes": "" },
-                { "date": "12/22/2024", "hours": 1, "notes": "" },
-                { "date": "12/23/2024", "hours": 1, "notes": "" },
-                { "date": "12/25/2024", "hours": 1, "notes": "" },
-                { "date": "12/26/2024", "hours": 3, "notes": "" },
-                { "date": "12/27/2024", "hours": 2.5, "notes": "" },
-                { "date": "12/30/2024", "hours": 1, "notes": "" },
-                { "date": "12/31/2024", "hours": 1, "notes": "" },
-                { "date": "1/2/2025", "hours": 1, "notes": "" },
-                { "date": "1/3/2025", "hours": 1, "notes": "" },
-                { "date": "1/7/2025", "hours": 1, "notes": "" },
-                { "date": "1/8/2025", "hours": 0.5, "notes": "" },
-                { "date": "1/9/2025", "hours": 0.5, "notes": "" },
-                { "date": "1/13/2025", "hours": 1, "notes": "" },
-                { "date": "1/14/2025", "hours": 1, "notes": "" },
-                { "date": "1/15/2025", "hours": 1, "notes": "" },
-                { "date": "1/16/2025", "hours": 1, "notes": "" },
-                { "date": "1/21/2025", "hours": 0.5, "notes": "" },
-                { "date": "1/27/2025", "hours": 1, "notes": "" },
-                { "date": "1/28/2025", "hours": 0.5, "notes": "" },
-                { "date": "2/12/2025", "hours": 0.5, "notes": "" },
-                { "date": "4/8/2025", "hours": 0.5, "notes": "" },
-                { "date": "4/28/2025", "hours": 2, "notes": "" },
-                { "date": "4/29/2025", "hours": 2, "notes": "" },
-                { "date": "4/30/2025", "hours": 1, "notes": "" },
-                { "date": "5/1/2025", "hours": 2, "notes": "" },
-                { "date": "5/2/2025", "hours": 2, "notes": "" },
-                { "date": "5/3/2025", "hours": 2, "notes": "" },
-                { "date": "5/4/2025", "hours": 3, "notes": "" },
-                { "date": "5/5/2025", "hours": 2, "notes": "" },
-                { "date": "5/6/2025", "hours": 1, "notes": "" },
-                { "date": "5/8/2025", "hours": 1.5, "notes": "" },
-                { "date": "5/9/2025", "hours": 2, "notes": "" }
-            ]
-        },
-        {
-            "id": 3,
-            "email": "michelleaminkowitz@gmail.com",
-            "phone": "(718) 578-1904",
-            "name": "Michelle Minkowitz",
-            "hours": [0, 0, 3, 1, 3],
-            "tutored": [
-                { "date": "12/10/2023", "hours": 3, "notes": "" },
-                { "date": "12/11/2023", "hours": 1, "notes": "" },
-                { "date": "12/12/2023", "hours": 1, "notes": "" },
-                { "date": "12/13/2023", "hours": 1, "notes": "" },
-                { "date": "12/20/2023", "hours": 1.5, "notes": "" },
-                { "date": "12/27/2023", "hours": 2, "notes": "" },
-                { "date": "1/3/2024", "hours": 1, "notes": "" },
-                { "date": "1/7/2024", "hours": 1.5, "notes": "" },
-                { "date": "1/14/2024", "hours": 1.5, "notes": "" },
-                { "date": "1/17/2024", "hours": 2, "notes": "" },
-                { "date": "1/21/2024", "hours": 2, "notes": "" },
-                { "date": "1/28/2024", "hours": 1, "notes": "" },
-                { "date": "1/29/2024", "hours": 1, "notes": "" },
-                { "date": "1/31/2024", "hours": 2, "notes": "" },
-                { "date": "2/4/2024", "hours": 2, "notes": "" },
-                { "date": "2/7/2024", "hours": 1, "notes": "" },
-                { "date": "2/11/2024", "hours": 1, "notes": "" },
-                { "date": "2/14/2024", "hours": 1, "notes": "" },
-                { "date": "2/18/2024", "hours": 1, "notes": "" },
-                { "date": "2/19/2024", "hours": 1, "notes": "" },
-                { "date": "2/21/2024", "hours": 1, "notes": "" },
-                { "date": "2/26/2024", "hours": 1, "notes": "" },
-                { "date": "2/27/2024", "hours": 1, "notes": "" },
-                { "date": "3/3/2024", "hours": 2, "notes": "" },
-                { "date": "3/17/2024", "hours": 1, "notes": "" },
-                { "date": "3/24/2024", "hours": 1, "notes": "" },
-                { "date": "4/12/2024", "hours": 0.5, "notes": "" },
-                { "date": "4/14/2024", "hours": 1, "notes": "" },
-                { "date": "4/15/2024", "hours": 1.5, "notes": "" },
-                { "date": "4/16/2024", "hours": 1, "notes": "" },
-                { "date": "4/17/2024", "hours": 1, "notes": "" },
-                { "date": "4/19/2024", "hours": 2, "notes": "" },
-                { "date": "4/21/2024", "hours": 2, "notes": "" },
-                { "date": "6/5/2024", "hours": 0.5, "notes": "" },
-                { "date": "6/23/2024", "hours": 1.5, "notes": "" },
-                { "date": "6/24/2024", "hours": 0.5, "notes": "" },
-                { "date": "6/28/2024", "hours": 1, "notes": "" },
-                { "date": "7/1/2024", "hours": 1, "notes": "" },
-                { "date": "7/8/2024", "hours": 1, "notes": "" },
-                { "date": "7/9/2024", "hours": 1, "notes": "" },
-                { "date": "7/11/2024", "hours": 0.5, "notes": "" },
-                { "date": "7/15/2024", "hours": 1.5, "notes": "" },
-                { "date": "7/17/2024", "hours": 1, "notes": "" },
-                { "date": "8/9/2024", "hours": 0.5, "notes": "" },
-                { "date": "8/12/2024", "hours": 1, "notes": "" },
-                { "date": "8/19/2024", "hours": 1, "notes": "" },
-                { "date": "11/18/2024", "hours": 2, "notes": "" },
-                { "date": "11/25/2024", "hours": 1, "notes": "" },
-                { "date": "12/2/2024", "hours": 1.5, "notes": "" },
-                { "date": "12/5/2024", "hours": 0.5, "notes": "" },
-                { "date": "12/11/2024", "hours": 1, "notes": "" },
-                { "date": "12/16/2024", "hours": 1, "notes": "" },
-                { "date": "12/22/2024", "hours": 2, "notes": "" },
-                { "date": "12/23/2024", "hours": 1, "notes": "" },
-                { "date": "12/28/2024", "hours": 1, "notes": "" },
-                { "date": "12/29/2024", "hours": 1, "notes": "" },
-                { "date": "12/30/2024", "hours": 0.5, "notes": "" },
-                { "date": "12/31/2024", "hours": 0.5, "notes": "" },
-                { "date": "1/6/2025", "hours": 1, "notes": "" },
-                { "date": "1/13/2025", "hours": 1, "notes": "" },
-                { "date": "1/16/2025", "hours": 1, "notes": "" },
-                { "date": "1/26/2025", "hours": 2, "notes": "" },
-                { "date": "1/27/2025", "hours": 0.5, "notes": "" },
-                { "date": "1/30/2025", "hours": 0.5, "notes": "" },
-                { "date": "2/3/2025", "hours": 1.5, "notes": "" },
-                { "date": "2/4/2025", "hours": 1, "notes": "" },
-                { "date": "2/5/2025", "hours": 0.5, "notes": "" },
-                { "date": "2/6/2025", "hours": 3, "notes": "" },
-                { "date": "2/7/2025", "hours": 4, "notes": "" },
-                { "date": "3/20/2025", "hours": 0.5, "notes": "" }
-            ]
-        },
-        {
-            "id": 4,
-            "email": "ns.sanchez724@gmail.com",
-            "phone": "(239) 560-3094",
-            "name": "Noel Sanchez",
-            "hours": [0, 1, 0, 0, 0],
-            "tutored": [
-                { "date": "1/10/2025", "hours": 1, "notes": "" }
-            ]
-        },
-        {
-            "id": 5,
-            "email": "breemsbliss@gmail.com",
-            "phone": "1(804)687-8383",
-            "name": "Tommy Harding",
-            "hours": [4, 15, 1, 0, 1],
-            "tutored": [
-                { "date": "8/26/2023", "hours": 1, "notes": "" },
-                { "date": "8/28/2023", "hours": 1, "notes": "" },
-                { "date": "11/24/2023", "hours": 1, "notes": "" },
-                { "date": "12/2/2023", "hours": 1, "notes": "" },
-                { "date": "12/19/2023", "hours": 1, "notes": "" },
-                { "date": "12/26/2023", "hours": 0.5, "notes": "" },
-                { "date": "12/27/2023", "hours": 0.5, "notes": "" },
-                { "date": "12/31/2023", "hours": 2, "notes": "" },
-                { "date": "1/1/2024", "hours": 3, "notes": "" },
-                { "date": "1/19/2024", "hours": 4, "notes": "" },
-                { "date": "6/6/2024", "hours": 5, "notes": "" },
-                { "date": "6/12/2024", "hours": 5, "notes": "" },
-                { "date": "7/3/2024", "hours": 5, "notes": "" },
-                { "date": "7/12/2024", "hours": 5, "notes": "" },
-                { "date": "7/20/2024", "hours": 3.5, "notes": "" },
-                { "date": "7/21/2024", "hours": 3.5, "notes": "" }
-            ]
-        },
-        {
-            "id": 6,
-            "email": "Domoboriowo14@Gmail.com",
-            "phone": "(862)704-3809",
-            "name": "Damilare Unique Omoboriowo",
-            "hours": [2, 2, 4, 1, 0],
-            "tutored": [
-                { "date": "7/25/2024", "hours": 1, "notes": "" },
-                { "date": "7/26/2024", "hours": 1, "notes": "" },
-                { "date": "7/27/2024", "hours": 1.5, "notes": "" },
-                { "date": "7/28/2024", "hours": 1.5, "notes": "" },
-                { "date": "7/29/2024", "hours": 1, "notes": "" },
-                { "date": "7/30/2024", "hours": 1.5, "notes": "" },
-                { "date": "8/18/2024", "hours": 1.5, "notes": "" },
-                { "date": "8/20/2024", "hours": 1, "notes": "" },
-                { "date": "8/21/2024", "hours": 1, "notes": "" },
-                { "date": "9/3/2024", "hours": 1, "notes": "" },
-                { "date": "9/4/2024", "hours": 0.5, "notes": "" },
-                { "date": "9/11/2024", "hours": 1, "notes": "" },
-                { "date": "9/12/2024", "hours": 1, "notes": "" },
-                { "date": "9/14/2024", "hours": 3, "notes": "" },
-                { "date": "9/15/2024", "hours": 1, "notes": "" },
-                { "date": "9/16/2024", "hours": 1, "notes": "" },
-                { "date": "9/17/2024", "hours": 1, "notes": "" },
-                { "date": "9/18/2024", "hours": 1.5, "notes": "" },
-                { "date": "9/19/2024", "hours": 0.5, "notes": "" },
-                { "date": "9/22/2024", "hours": 2, "notes": "" },
-                { "date": "9/23/2024", "hours": 3, "notes": "" },
-                { "date": "9/28/2024", "hours": 1, "notes": "" },
-                { "date": "9/29/2024", "hours": 4, "notes": "" },
-                { "date": "9/30/2024", "hours": 0.5, "notes": "" }
-            ]
-        },
-        {
-            "id": 7,
-            "email": "caseyvmatthews@gmail.com",
-            "phone": "(856) 745-2994",
-            "name": "Catherine Matthews",
-            "hours": [0, 2, 0, 0, 6],
-            "tutored": [
-                { "date": "5/16/2024", "hours": 2.5, "notes": "" },
-                { "date": "5/17/2024", "hours": 2, "notes": "" },
-                { "date": "5/19/2024", "hours": 2, "notes": "" },
-                { "date": "5/20/2024", "hours": 1, "notes": "" },
-                { "date": "5/22/2024", "hours": 2.5, "notes": "" },
-                { "date": "5/23/2024", "hours": 1.5, "notes": "" },
-                { "date": "5/24/2024", "hours": 3, "notes": "" },
-                { "date": "5/28/2024", "hours": 1, "notes": "" },
-                { "date": "5/29/2024", "hours": 2.5, "notes": "" },
-                { "date": "5/30/2024", "hours": 2, "notes": "" },
-                { "date": "5/31/2024", "hours": 1, "notes": "" },
-                { "date": "6/2/2024", "hours": 3.5, "notes": "" },
-                { "date": "6/3/2024", "hours": 1, "notes": "" },
-                { "date": "6/4/2024", "hours": 1, "notes": "" },
-                { "date": "6/5/2024", "hours": 1, "notes": "" },
-                { "date": "6/6/2024", "hours": 1.5, "notes": "" },
-                { "date": "6/7/2024", "hours": 1.5, "notes": "" },
-                { "date": "6/10/2024", "hours": 1, "notes": "" },
-                { "date": "6/11/2024", "hours": 0.5, "notes": "" },
-                { "date": "6/12/2024", "hours": 1, "notes": "" },
-                { "date": "6/13/2024", "hours": 2, "notes": "" },
-                { "date": "6/14/2024", "hours": 1, "notes": "" },
-                { "date": "6/16/2024", "hours": 1.5, "notes": "" },
-                { "date": "6/17/2024", "hours": 2.5, "notes": "" },
-                { "date": "6/19/2024", "hours": 1.5, "notes": "" },
-                { "date": "6/20/2024", "hours": 2.5, "notes": "" },
-                { "date": "6/24/2024", "hours": 1, "notes": "" },
-                { "date": "6/25/2024", "hours": 1.5, "notes": "" },
-                { "date": "6/26/2024", "hours": 3.5, "notes": "" },
-                { "date": "6/27/2024", "hours": 1, "notes": "" },
-                { "date": "6/28/2024", "hours": 1.5, "notes": "" },
-                { "date": "7/1/2024", "hours": 1, "notes": "" },
-                { "date": "7/2/2024", "hours": 1, "notes": "" },
-                { "date": "7/3/2024", "hours": 1, "notes": "" },
-                { "date": "7/4/2024", "hours": 1, "notes": "" },
-                { "date": "7/7/2024", "hours": 1, "notes": "" },
-                { "date": "7/8/2024", "hours": 1.5, "notes": "" },
-                { "date": "7/9/2024", "hours": 1, "notes": "" },
-                { "date": "7/10/2024", "hours": 1, "notes": "" },
-                { "date": "7/11/2024", "hours": 1, "notes": "" },
-                { "date": "7/15/2024", "hours": 1, "notes": "" },
-                { "date": "7/16/2024", "hours": 1, "notes": "" },
-                { "date": "7/17/2024", "hours": 1, "notes": "" },
-                { "date": "7/18/2024", "hours": 1, "notes": "" },
-                { "date": "7/22/2024", "hours": 0.5, "notes": "" },
-                { "date": "7/24/2024", "hours": 1.5, "notes": "" },
-                { "date": "7/25/2024", "hours": 1, "notes": "" },
-                { "date": "7/27/2024", "hours": 0.5, "notes": "" },
-                { "date": "7/28/2024", "hours": 1, "notes": "" },
-                { "date": "7/29/2024", "hours": 1, "notes": "" },
-                { "date": "7/30/2024", "hours": 1, "notes": "" },
-                { "date": "7/31/2024", "hours": 3, "notes": "" },
-                { "date": "8/1/2024", "hours": 2, "notes": "" },
-                { "date": "8/2/2024", "hours": 2, "notes": "" },
-                { "date": "8/5/2024", "hours": 1, "notes": "" },
-                { "date": "8/6/2024", "hours": 1, "notes": "" },
-                { "date": "8/10/2024", "hours": 1, "notes": "" },
-                { "date": "8/12/2024", "hours": 1, "notes": "" },
-                { "date": "8/13/2024", "hours": 1.5, "notes": "" },
-                { "date": "8/14/2024", "hours": 2, "notes": "" },
-                { "date": "8/15/2024", "hours": 1, "notes": "" },
-                { "date": "8/19/2024", "hours": 1, "notes": "" },
-                { "date": "8/20/2024", "hours": 1, "notes": "" },
-                { "date": "8/21/2024", "hours": 1, "notes": "" },
-                { "date": "8/23/2024", "hours": 1, "notes": "" },
-                { "date": "8/26/2024", "hours": 2, "notes": "" },
-                { "date": "8/27/2024", "hours": 1, "notes": "" },
-                { "date": "8/28/2024", "hours": 1, "notes": "" },
-                { "date": "8/29/2024", "hours": 1, "notes": "" },
-                { "date": "8/30/2024", "hours": 2, "notes": "" },
-                { "date": "9/1/2024", "hours": 2, "notes": "" },
-                { "date": "9/3/2024", "hours": 1.5, "notes": "" },
-                { "date": "9/6/2024", "hours": 1.5, "notes": "" },
-                { "date": "9/9/2024", "hours": 2, "notes": "" },
-                { "date": "9/10/2024", "hours": 2, "notes": "" },
-                { "date": "9/11/2024", "hours": 1.5, "notes": "" },
-                { "date": "9/12/2024", "hours": 1, "notes": "" },
-                { "date": "9/13/2024", "hours": 1, "notes": "" },
-                { "date": "9/14/2024", "hours": 2.5, "notes": "" },
-                { "date": "9/15/2024", "hours": 1.5, "notes": "" },
-                { "date": "9/16/2024", "hours": 1, "notes": "" },
-                { "date": "9/17/2024", "hours": 1.5, "notes": "" },
-                { "date": "9/18/2024", "hours": 1, "notes": "" },
-                { "date": "9/19/2024", "hours": 1, "notes": "" },
-                { "date": "9/20/2024", "hours": 1, "notes": "" },
-                { "date": "9/22/2024", "hours": 1, "notes": "" },
-                { "date": "9/24/2024", "hours": 1, "notes": "" },
-                { "date": "9/25/2024", "hours": 1.5, "notes": "" },
-                { "date": "9/27/2024", "hours": 1, "notes": "" },
-                { "date": "9/30/2024", "hours": 1, "notes": "" }
-            ]
-        },
-        {
-            "id": 8,
-            "email": "jennifer.v.harris@outlook.com",
-            "phone": "(301) 957-1225",
-            "name": "Jennifer Harris",
-            "hours": [0, 1, 1, 6, 0],
-            "tutored": [
-                { "date": "7/15/2024", "hours": 1, "notes": "" },
-                { "date": "7/16/2024", "hours": 2, "notes": "" },
-                { "date": "7/18/2024", "hours": 1, "notes": "" },
-                { "date": "7/19/2024", "hours": 2, "notes": "" },
-                { "date": "7/22/2024", "hours": 1.5, "notes": "" },
-                { "date": "7/23/2024", "hours": 2.5, "notes": "" },
-                { "date": "7/25/2024", "hours": 2, "notes": "" },
-                { "date": "7/26/2024", "hours": 1, "notes": "" },
-                { "date": "7/29/2024", "hours": 2, "notes": "" },
-                { "date": "7/30/2024", "hours": 2, "notes": "" },
-                { "date": "8/2/2024", "hours": 3, "notes": "" },
-                { "date": "8/3/2024", "hours": 3, "notes": "" },
-                { "date": "8/4/2024", "hours": 2, "notes": "" },
-                { "date": "8/5/2024", "hours": 3, "notes": "" },
-                { "date": "8/6/2024", "hours": 1, "notes": "" },
-                { "date": "8/8/2024", "hours": 3, "notes": "" },
-                { "date": "8/9/2024", "hours": 2, "notes": "" },
-                { "date": "8/11/2024", "hours": 2, "notes": "" },
-                { "date": "8/13/2024", "hours": 2, "notes": "" },
-                { "date": "8/14/2024", "hours": 1, "notes": "" },
-                { "date": "8/15/2024", "hours": 2, "notes": "" },
-                { "date": "8/16/2024", "hours": 1, "notes": "" },
-                { "date": "8/18/2024", "hours": 2, "notes": "" },
-                { "date": "8/19/2024", "hours": 2.5, "notes": "" },
-                { "date": "8/20/2024", "hours": 1, "notes": "" },
-                { "date": "8/21/2024", "hours": 2, "notes": "" },
-                { "date": "8/22/2024", "hours": 1.5, "notes": "" },
-                { "date": "8/23/2024", "hours": 1, "notes": "" },
-                { "date": "8/25/2024", "hours": 2, "notes": "" },
-                { "date": "8/27/2024", "hours": 1, "notes": "" },
-                { "date": "8/29/2024", "hours": 1, "notes": "" },
-                { "date": "8/30/2024", "hours": 2, "notes": "" },
-                { "date": "9/2/2024", "hours": 2, "notes": "" },
-                { "date": "9/4/2024", "hours": 1, "notes": "" },
-                { "date": "9/5/2024", "hours": 1, "notes": "" },
-                { "date": "9/6/2024", "hours": 2, "notes": "" },
-                { "date": "9/8/2024", "hours": 2, "notes": "" }
-            ]
-        },
-        {
-            "id": 9,
-            "email": "hasmigg23@gmail.com",
-            "phone": "",
-            "name": "Hasmig Gregorian",
-            "hours": [0, 0, 0, 0, 3],
-            "tutored": [
-                { "date": "4/1/2024", "hours": 1, "notes": "" },
-                { "date": "4/8/2024", "hours": 1, "notes": "" },
-                { "date": "4/9/2024", "hours": 1, "notes": "" },
-                { "date": "4/10/2024", "hours": 3, "notes": "" },
-                { "date": "4/11/2024", "hours": 1, "notes": "" },
-                { "date": "4/12/2024", "hours": 3, "notes": "" },
-                { "date": "4/13/2024", "hours": 4, "notes": "" },
-                { "date": "4/15/2024", "hours": 1, "notes": "" },
-                { "date": "4/16/2024", "hours": 2, "notes": "" },
-                { "date": "4/17/2024", "hours": 3, "notes": "" },
-                { "date": "4/18/2024", "hours": 5, "notes": "" },
-                { "date": "4/19/2024", "hours": 1, "notes": "" },
-                { "date": "4/23/2024", "hours": 1, "notes": "" },
-                { "date": "4/25/2024", "hours": 1, "notes": "" },
-                { "date": "4/26/2024", "hours": 3, "notes": "" },
-                { "date": "4/29/2024", "hours": 2, "notes": "" },
-                { "date": "4/30/2024", "hours": 1, "notes": "" },
-                { "date": "5/1/2024", "hours": 1, "notes": "" },
-                { "date": "5/6/2024", "hours": 1, "notes": "" },
-                { "date": "5/7/2024", "hours": 1, "notes": "" },
-                { "date": "5/9/2024", "hours": 1, "notes": "" },
-                { "date": "5/10/2024", "hours": 1, "notes": "" },
-                { "date": "5/21/2024", "hours": 1, "notes": "" },
-                { "date": "5/22/2024", "hours": 2, "notes": "" },
-                { "date": "5/23/2024", "hours": 1, "notes": "" },
-                { "date": "5/24/2024", "hours": 0.5, "notes": "" },
-                { "date": "5/28/2024", "hours": 1, "notes": "" },
-                { "date": "5/29/2024", "hours": 1, "notes": "" },
-                { "date": "5/30/2024", "hours": 2, "notes": "" },
-                { "date": "5/31/2024", "hours": 1, "notes": "" },
-                { "date": "6/3/2024", "hours": 1, "notes": "" },
-                { "date": "6/4/2024", "hours": 1, "notes": "" },
-                { "date": "6/5/2024", "hours": 1, "notes": "" },
-                { "date": "6/6/2024", "hours": 1, "notes": "" },
-                { "date": "6/7/2024", "hours": 2, "notes": "" },
-                { "date": "6/8/2024", "hours": 3, "notes": "" },
-                { "date": "6/10/2024", "hours": 1, "notes": "" },
-                { "date": "6/11/2024", "hours": 1, "notes": "" },
-                { "date": "6/12/2024", "hours": 0.5, "notes": "" }
-            ]
-        },
-        {
-            "id": 10,
-            "email": "",
-            "phone": "",
-            "name": "Debora Cano",
-            "hours": [0, 2, 0, 0, 0],
-            "tutored": [
-                { "date": "11/9/2023", "hours": 1, "notes": "" },
-                { "date": "3/20/2024", "hours": 1, "notes": "" }
-            ]
-        },
-        {
-            "id": 11,
-            "email": "lexx.sunshineteam@gmail.com",
-            "phone": "3524286931",
-            "name": "Alexis Vasquez",
-            "hours": [2, 0, 2, 0, 0],
-            "tutored": [
-                { "date": "5/9/2023", "hours": 1, "notes": "" },
-                { "date": "5/16/2023", "hours": 1, "notes": "" },
-                { "date": "5/23/2023", "hours": 1, "notes": "" },
-                { "date": "6/19/2023", "hours": 1, "notes": "" },
-                { "date": "6/23/2023", "hours": 1, "notes": "" },
-                { "date": "7/12/2023", "hours": 1, "notes": "" },
-                { "date": "7/18/2023", "hours": 1, "notes": "" },
-                { "date": "7/25/2023", "hours": 1, "notes": "" },
-                { "date": "7/29/2023", "hours": 1, "notes": "" },
-                { "date": "8/25/2023", "hours": 2, "notes": "" }
-            ]
-        },
-        {
-            "id": 12,
-            "email": "",
-            "phone": "",
-            "name": "Marc Rhymanun",
-            "hours": [0, 2, 4, 0, 0],
-            "tutored": [
-                { "date": "7/28/2023", "hours": 2, "notes": "" },
-                { "date": "7/30/2023", "hours": 2, "notes": "" },
-                { "date": "8/2/2023", "hours": 1, "notes": "" },
-                { "date": "8/3/2023", "hours": 0.5, "notes": "" },
-                { "date": "8/4/2023", "hours": 1, "notes": "" },
-                { "date": "8/5/2023", "hours": 1, "notes": "" },
-                { "date": "8/6/2023", "hours": 1.5, "notes": "" },
-                { "date": "8/11/2023", "hours": 1, "notes": "" },
-                { "date": "8/12/2023", "hours": 2, "notes": "" },
-                { "date": "8/13/2023", "hours": 2, "notes": "" },
-                { "date": "8/14/2023", "hours": 1, "notes": "" },
-                { "date": "9/26/2023", "hours": 1, "notes": "" },
-                { "date": "9/29/2023", "hours": 1.5, "notes": "" },
-                { "date": "9/30/2023", "hours": 2, "notes": "" },
-                { "date": "10/1/2023", "hours": 2.5, "notes": "" }
-            ]
-        },
-        {
-            "id": 13,
-            "email": "tayloraldridge3@gmail.com",
-            "phone": "",
-            "name": "Taylor Aldridge",
-            "hours": [0, 2, 4, 1, 0],
-            "tutored": [
-                { "date": "4/19/2023", "hours": 1, "notes": "" },
-                { "date": "4/26/2023", "hours": 1, "notes": "" },
-                { "date": "5/3/2023", "hours": 1, "notes": "" },
-                { "date": "5/10/2023", "hours": 1, "notes": "" },
-                { "date": "5/17/2023", "hours": 1, "notes": "" },
-                { "date": "8/2/2023", "hours": 1, "notes": "" },
-                { "date": "8/8/2023", "hours": 1, "notes": "" },
-                { "date": "8/10/2023", "hours": 1, "notes": "" },
-                { "date": "8/31/2023", "hours": 0.5, "notes": "" },
-                { "date": "9/7/2023", "hours": 1, "notes": "" },
-                { "date": "9/11/2023", "hours": 1, "notes": "" },
-                { "date": "9/13/2023", "hours": 1, "notes": "" },
-                { "date": "9/18/2023", "hours": 0.5, "notes": "" },
-                { "date": "9/20/2023", "hours": 1.5, "notes": "" },
-                { "date": "9/22/2023", "hours": 0.5, "notes": "" },
-                { "date": "9/26/2023", "hours": 1, "notes": "" },
-                { "date": "9/27/2023", "hours": 1.5, "notes": "" },
-                { "date": "9/28/2023", "hours": 1, "notes": "" },
-                { "date": "9/29/2023", "hours": 1, "notes": "" },
-                { "date": "10/2/2023", "hours": 1.5, "notes": "" },
-                { "date": "10/3/2023", "hours": 1, "notes": "" },
-                { "date": "10/9/2023", "hours": 1, "notes": "" },
-                { "date": "10/16/2023", "hours": 1.5, "notes": "" },
-                { "date": "10/18/2023", "hours": 2.5, "notes": "" },
-                { "date": "10/23/2023", "hours": 0.5, "notes": "" },
-                { "date": "10/24/2023", "hours": 1, "notes": "" },
-                { "date": "10/25/2023", "hours": 1, "notes": "" },
-                { "date": "10/30/2023", "hours": 0.5, "notes": "" },
-                { "date": "10/31/2023", "hours": 1, "notes": "" },
-                { "date": "11/1/2023", "hours": 1, "notes": "" },
-                { "date": "11/16/2023", "hours": 1, "notes": "" }
-            ]
-        },
-        {
-            "id": 14,
-            "email": "salceja@gmail.com",
-            "phone": "",
-            "name": "Salvador",
-            "hours": [0, 2, 1, 0, 0],
-            "tutored": [
-                { "date": "12/10/2023", "hours": 2, "notes": "" },
-                { "date": "12/11/2023", "hours": 1, "notes": "" },
-                { "date": "12/12/2023", "hours": 2, "notes": "" },
-                { "date": "12/13/2023", "hours": 1, "notes": "" }
-            ]
-        },
-        {
-            "id": 15,
-            "email": "Romero.Hipolito@Gmail.com",
-            "phone": "3478805004",
-            "name": "Hipolito Romero",
-            "hours": [0, 1, 2, 0, 0],
-            "tutored": [
-                { "date": "10/22/2023", "hours": 2.5, "notes": "" },
-                { "date": "10/24/2023", "hours": 0.5, "notes": "" },
-                { "date": "10/30/2023", "hours": 1, "notes": "" },
-                { "date": "11/7/2023", "hours": 1, "notes": "" },
-                { "date": "11/19/2023", "hours": 1, "notes": "" },
-                { "date": "11/25/2023", "hours": 1, "notes": "" },
-                { "date": "11/26/2023", "hours": 1, "notes": "" },
-                { "date": "11/27/2023", "hours": 0.5, "notes": "" },
-                { "date": "12/2/2023", "hours": 0.5, "notes": "" },
-                { "date": "12/15/2023", "hours": 2, "notes": "" }
-            ]
-        }
-    ];
+let d, sec, tutorDiv;
 
 const fx = i => {
     let dts = [];
@@ -843,88 +41,130 @@ const ch_order = ({ id, value }) => {
 
     if (value < 1 || value > data.length) return alert('Order is out of range.');
 
-    let el = data.find(obj => obj.id == id);
-    data = data.filter(obj => obj.id != id);
+    let el = d.find(obj => obj.id == id);
+    d = d.filter(obj => obj.id != id);
 
     el.id = value;
 
-    data = data.map((obj, i) => {
+    d = d.map((obj, i) => {
         let id = i + 1;
         if (id >= value) id++;
 
         return { ...obj, id };
     });
 
-    data.push(el);
-    init(data);
+    d.push(el);
+
+    // need to update data;
+    data = d;
+    init();
 };
 
 const purchase = (i, id) => {
 
+    let sec = document.querySelector('.section_2');
+    if (sec) sec.style.height = 0;
+
+    let parent = document.getElementById(`row_${id}`);
+    let tutorDiv = document.getElementById('tutorDiv');
+    let owed = parent.querySelector('.owed');
+
+    if(tutorDiv) {
+        if(tutorDiv.parentElement != parent) {
+            tutorDiv.style.height = 0;
+            setTimeout(()=>document.location.reload(),1100);
+        };
+    }
+
+    let value = parseFloat(owed.innerText) +
+        (i == 1 ? 1 :
+        i == 2 ? 5 :
+        i == 0 ? 0.5 : 
+        i == 3 ? 10 : 20);
+
+    owed.innerText = value;
+    
+    if (document.getElementById('oweId')) oweId.innerText = value;
+
     data[id - 1].hours[i] += 1;
-    init(data);
 };
 
 const renderDetails = id => {
 
-    if (document.querySelector(`#row_${id}`).children[1]) {
-        document.querySelector(`#row_${id}`).children[1].style.height = 0;
-        setTimeout(() => { document.querySelector(`#row_${id}`).children[1].remove() }, 1000);
-        return
-    };
+    tutorDiv = document.getElementById('tutorDiv');
+    sec = document.querySelector('.section_2');
 
-    let hero = data.find(obj => obj.id == id);
-    let total = hero.hours[0] * 0.5 + hero.hours[1] + hero.hours[2] * 5 + hero.hours[3] * 10 + hero.hours[4] * 20;
+    if ( sec && tutorDiv) {
+        
+        sec.style.height = 0;
+        tutorDiv.style.height = 0;
+        setTimeout(()=>document.location.reload(), 1100);
 
-    document.getElementById(`row_${id}`).innerHTML += '<div class="section_2"></div>';
+    } else if ( sec ) {
+        
+        sec.style.height = 0;
+        setTimeout(()=>document.location.reload(), 1100);
+        
+    } else if ( tutorDiv) {
+        
+        tutorDiv.style.height = 0;
+        setTimeout(()=>document.location.reload(), 1100);
+        
+    } else {
 
-    hDiv = document.querySelector(`#row_${id}`).children[1];
+        let hero = d.find(obj => obj.id == id);
+        let total = hero.hours[0] * 0.5 + hero.hours[1] + hero.hours[2] * 5 + hero.hours[3] * 10 + hero.hours[4] * 20;
 
-    hDiv.innerHTML += `
-        <div>
-            <div>
-                <div>email</div> 
-                <div>${hero.email}</div>
+        document.getElementById(`row_${id}`).innerHTML += '<div class="section_2"></div>';
+
+        hDiv = document.querySelector('.section_2');
+
+        hDiv.innerHTML += `
+            <div id='detailHead'>
+                <div>
+                    <div>email</div> 
+                    <div>${hero.email}</div>
+                </div>
+                <div>
+                    <div>1/2 h</div>
+                    <div>${hero.hours[0]}</div>
+                    <div>1 h</div>
+                    <div>${hero.hours[1]}</div>
+                    <div>5 hs</div>
+                    <div>${hero.hours[2]}</div>
+                    <div>10 hs</div>
+                    <div>${hero.hours[3]}</div>
+                    <div>20 hs</div>
+                    <div>${hero.hours[4]}</div>
+                    <div>Total</div>
+                    <div>${total}</div>
+                </div>
+                <div>
+                    <div>Phone</div>
+                    <div>${hero.phone}</div>
+                </div>
             </div>
-            <div>
-                <div>1/2 h</div>
-                <div>${hero.hours[0]}</div>
-                <div>1 h</div>
-                <div>${hero.hours[1]}</div>
-                <div>5 hs</div>
-                <div>${hero.hours[2]}</div>
-                <div>10 hs</div>
-                <div>${hero.hours[3]}</div>
-                <div>20 hs</div>
-                <div>${hero.hours[4]}</div>
-                <div>Total</div>
-                <div>${total}</div>
-            </div>
-            <div>
-                <div>Phone</div>
-                <div>${hero.phone}</div>
-            </div>
-        </div>
-        <div class='hoursDiv'></div>
-    `;
+            <div class='hoursDiv'></div>
+        `;
 
-    hero.tutored.forEach(obj =>
-        document.getElementById(`row_${id}`).querySelector(".hoursDiv").innerHTML += `
-        <div>
-            <div>DATE</div>
-            <div>${obj.date}</div>
-            <div>HOURS</div>
-            <div>${obj.hours}</div>
-            <div>NOTES</div>
-            <div>${obj.notes}</div>
-        </div>
-    `);
+        hero.tutored.forEach(obj =>
+            document.getElementById(`row_${id}`).querySelector(".hoursDiv").innerHTML += `
+            <div>
+                <div>DATE</div>
+                <div>${obj.date}</div>
+                <div>HOURS</div>
+                <div>${obj.hours}</div>
+                <div>NOTES</div>
+                <div>${obj.notes}</div>
+            </div>
+        `);
 
-    h = `${hDiv.getBoundingClientRect().height}px`;
-    hDiv.style.height = 0;
-    hDiv.style.position = 'relative';
-    hDiv.style.opacity = 1;
-    setTimeout(() => { hDiv.style.height = h; }, 1);
+        h = `${hDiv.getBoundingClientRect().height*1.3}px`;
+        hDiv.style.height = 0;
+        hDiv.style.position = 'relative';
+        hDiv.style.opacity = 1;
+        setTimeout(()=>{hDiv.style.height = h},1);
+    }; 
 };
 
 const renderRows = d => {
@@ -994,47 +234,39 @@ const tutorFx = id => {
 
     let hourIndex;
     let today = new Date().toLocaleDateString();
-    let dataIndex = data.indexOf(data.find(obj => obj.id == id));
+    let dIndex = d.indexOf(d.find(obj => obj.id == id));
+    let hourObj = d[dIndex].tutored.find(({ date }) => date == today);
 
-    if (data[dataIndex].tutored.find(({ date }) => date == today)) {
-        hourIndex = data[dataIndex].tutored.map(({ date }) => date).indexOf(today);
-        data[dataIndex].tutored[hourIndex].hours += 0.5;
+    sec = document.querySelector('.section_2');
+
+    if (hourObj) {
+        hourIndex = d[dIndex].tutored.indexOf(hourObj);
+        d[dIndex].tutored[hourIndex].hours += 0.5;
     } else {
-        data[dataIndex].tutored.push({ date: today, hours: 0.5, notes: '' });
-        hourIndex = data[dataIndex].tutored.length - 1;
+        d[dIndex].tutored.push({ date: today, hours: 0.5, notes: '' });
+        hourIndex = d[dIndex].tutored.length - 1;
     };
 
-    let tutored = data[dataIndex].tutored[hourIndex].hours;
+    let tutored = d[dIndex].tutored[hourIndex].hours;
     let owed = parseFloat(document.getElementById(`row_${id}`).querySelector('.owed').innerText) - tutored;
+    document.getElementById(`row_${id}`).querySelector('.owed').innerText = owed;
 
     if (
 
-        document.getElementById('tutorDiv') &&
-        document.getElementById('tutorDiv').parentElement.id.split('_')[1] != id
+        tutorDiv &&
+        tutorDiv.parentElement.id.split('_')[1] != id
 
     ) {
 
         tutorDiv.style.height = 0;
-        setTimeout(() => {
-            tutorDiv.remove()
-            document.getElementById(`row_${id}`).innerHTML += `
-            <div id='tutorDiv'>
-                <table class='tutorInnerDiv'>
-                    <tbody>
-                        <tr><td colspan='2'"><h3>${new Date().toDateString()}</h3></td></tr>
-                        <tr><td><h4>Hours Tutored Today</h4></td><td id='tutorId'>${tutored}</td></tr>
-                        <tr><td><h4>Total Hours Owed </h4></td><td id='oweId'>${owed}</td></tr>
-                        <tr><td colspan='2'><label>Notes</label></td></tr>
-                        <tr><td colspan='2'><textarea onchange="handleNotes(this,${dataIndex})">${data[dataIndex].tutored[hourIndex].notes}</textarea></td></tr>
-                        <tr><td colspan='2'><button onclick='handleSubmit(this,${dataIndex})'>Submit</button></td></tr>
-                    </tbody>
-                </table>
-            </div>`;
-            setTimeout(() => document.getElementById('tutorDiv').style.height = '250px', 1);
+        setTimeout(() => { document.location.reload() }, 1100);
+        
+    } else if ( sec ) {
+        
+        sec.style.height = 0;
+        setTimeout(() => { document.location.reload() }, 1100);
 
-        }, 1100);
-
-    } else if (document.getElementById('tutorDiv')) {
+    } else if ( tutorDiv ) {
 
         document.getElementById('tutorId').innerText = tutored;
         document.getElementById('oweId').innerText = owed;
@@ -1049,26 +281,35 @@ const tutorFx = id => {
                         <tr><td><h4>Hours Tutored Today</h4></td><td id='tutorId'>${tutored}</td></tr>
                         <tr><td><h4>Total Hours Owed </h4></td><td id='oweId'>${owed}</td></tr>
                         <tr><td colspan='2'><label>Notes</label></td></tr>
-                        <tr><td colspan='2'><textarea onchange="handleNotes(this,${dataIndex})">${data[dataIndex].tutored[hourIndex].notes}</textarea></td></tr>
-                        <tr><td colspan='2'><button onclick='handleSubmit(this,${dataIndex})'>Submit</button></td></tr>
+                        <tr><td colspan='2'><textarea onchange="handleNotes(this,${dIndex})">${d[dIndex].tutored[hourIndex].notes}</textarea></td></tr>
+                        <tr><td colspan='2'><button onclick='handleSubmit(this,${dIndex})'>Submit</button></td></tr>
                     </tbody>
                 </table>
             </div>`;
-        setTimeout(() => document.getElementById('tutorDiv').style.height = '250px', 1);
+        
+        tutorDiv = document.getElementById('tutorDiv');
+        setTimeout(() => tutorDiv.style.height = '250px', 1);
+    };
 
-    }
+    // update data
 };
 
-const init = d => {
+const init = async () => {
+
+    // need to fetch data
+    d = data;
 
     let purchased =
-        data.map(obj => obj.hours[1]).reduce((a, b) => a + b) +
-        data.map(obj => obj.hours[2]).reduce((a, b) => a + b) * 5 +
-        data.map(obj => obj.hours[3]).reduce((a, b) => a + b) * 10 +
-        data.map(obj => obj.hours[0]).reduce((a, b) => a + b) * .5 +
-        data.map(obj => obj.hours[4]).reduce((a, b) => a + b) * 20;
+        d.map(obj => obj.hours[1]).reduce((a, b) => a + b) +
+        d.map(obj => obj.hours[2]).reduce((a, b) => a + b) * 5 +
+        d.map(obj => obj.hours[3]).reduce((a, b) => a + b) * 10 +
+        d.map(obj => obj.hours[0]).reduce((a, b) => a + b) * .5 +
+        d.map(obj => obj.hours[4]).reduce((a, b) => a + b) * 20;
 
-    let tutored = data.length ? data.map(({ tutored }) => tutored.length ? tutored.map(({ hours }) => hours).reduce((a, b) => a + b) : 0).reduce((a, b) => a + b) : 0;
+    let tutored = 
+        d.length 
+        ? d.map(({ tutored }) => tutored.length ? tutored.map(({ hours }) => hours).reduce((a, b) => a + b) : 0).reduce((a, b) => a + b) 
+        : 0;
 
     container.innerHTML = `
     <div id="newClientDiv" class="row">
@@ -1107,18 +348,18 @@ const init = d => {
 
     document.getElementById('addHero').onclick = () => {
         if (heroName.value && email.value && number.value) {
-            data = [{ id: data.length + 1, email: email.value, phone: number.value, name: heroName.value, hours: [0, 0, 0, 0, 0], tutored: [] }, ...d];
+            d = [{ id: d.length + 1, email: email.value, phone: number.value, name: heroName.value, hours: [0, 0, 0, 0, 0], tutored: [] }, ...d];
 
             heroName.value = '';
             email.value = '';
             number.value = '';
 
-            ch_order({ id: data.length, value: 1 })
+            ch_order({ id: d.length, value: 1 })
         }
     }
 
     renderRows(d);
 };
 
-init(data);
+init();
 
