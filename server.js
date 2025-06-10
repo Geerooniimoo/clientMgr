@@ -1,6 +1,6 @@
 const express = require('express');
 const { writeFile } = require('fs');
-let store = require('./db/data.json');
+let store = require('./db/data2.json');
 const { log } = require('console');
 
 const app = express();
