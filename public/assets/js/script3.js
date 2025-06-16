@@ -141,7 +141,7 @@ const addClient = async () => {
 
     if (newClient.value) {
 
-        let newPerson = await (await fetch('/api/addclient', {
+        // let newPerson = await (await fetch('/api/addclient', {
             method: 'POST',
             body: JSON.stringify({ name: newClient.value, email: newEmail.value, phone: newNumber.value }),
             headers: { 'Content-Type': 'application/json' }

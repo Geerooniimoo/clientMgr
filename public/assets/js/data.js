@@ -1,4 +1,4 @@
-const data = require('../../../db/data.json');
+const data = require('./../../../db/data.json');
 const { writeFile } = require('fs');
 
 let formattedData = [];
@@ -37,7 +37,7 @@ data.forEach((data, i) => {
 
 });
 
-writeFile('./db/data2.json', JSON.stringify(formattedData), err=> {
+writeFile('./../../../db/data2.json', JSON.stringify(formattedData), err=> {
     if (err) {
         console.log(err);
         

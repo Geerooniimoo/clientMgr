@@ -92,12 +92,35 @@ label {
     background: #dbdbdb;
     justify-content: space-around;
     overflow: hidden;
-    position: fixed;
-    /* opacity: 0; */
 }
 
 #detailHead {
-    height: 30px;
+    height: 25px;
+}
+
+#detailHead > div {
+    display: flex;
+    align-items: stretch;
+}
+
+#detailHead > div > div {
+    display: flex;
+    padding: 4px;
+    font-size: 1vw;
+    font-weight: 900;
+    align-items: center;
+    border: 1px solid black;
+    height: 1rem;
+}
+
+#detailHead > div > div:nth-child(odd) {
+    background: #406c7e;
+    color: white;
+}
+
+#detailHead > div > div:nth-child(even) {
+    color: black;
+    background: white;
 }
 
 .section_2 > div {
@@ -111,46 +134,59 @@ label {
     background: navajowhite;
 }
 
-.section_2 > div > div {
+.hourRow {
+    width: 475px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 5px;
+    font-size: 1vw;
+    position: relative;
 }
 
-.section_2 > div > div > div:nth-child(odd) {
-    font-weight: 900;
+.hourRow > .notes {
+    width: 40%;
+    height: 1rem;
+    overflow: hidden;
+    justify-content: left;
+    align-items: start;
+}
+
+.hourRow > div {
+    width: 18%;
+    border: 1px solid black;
+    height: 1rem;
+    font-size: 0.8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hourRow > div:nth-child(odd) {
     background: #406c7e;
     color: white;
-    border: 1px solid black;
-    align-items: center;
-    padding: 0 5px;
-    font-size: 0.8rem;
 }
 
-.section_2 > div > div > div:nth-child(even) {
-    font-weight: 900;
-    padding: 0px 5px;
+.hourRow > div:nth-child(even) {
     color: black;
-    border: 1px solid black;
-    margin: 5px 0;
     background: white;
-    align-items: center;
-    font-size: 0.8rem;
 }
 
-.hoursDiv > div > div {
-    width: 3rem;
-    text-align: center;
+.hourRow > div.detailNotes {
+    background: white;
+    position: absolute;
+    top: 20px;
+    padding: 5px;
+    display: none;
+    z-index: 1;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: fit-content;
+    right: 0;
+    color: black;
 }
 
-.hoursDiv > div > div:nth-child(4) {
-    width: 1.2rem;
-}
-
-.hoursDiv > div > div:nth-child(6) {
-    width: 1.2rem;
-    height: 0.9rem;
+.hourRow > div:nth-child(4) {
+    width: 2rem;
 }
 
 .titleDiv {
@@ -171,7 +207,7 @@ label {
     width: 50%;
     padding: 5px;
     flex-direction: column;
-    font-size: 1.4vw;
+    font-size: 1vw;
 }
 
 .datesDiv {
@@ -296,7 +332,7 @@ th {
 
 .focusDiv h1 {
     width: 100%;
-    font-size: 1.5vw;
+    font-size: 1vw;
     margin-right: 0 !important;
     margin-bottom: 10px;
     text-align: center;
@@ -332,7 +368,7 @@ th {
 
 .hourDiv td {
     padding: 5px;
-    font-size: 1.5vw;
+    font-size: 1vw;
     text-align: center;
 }
 
@@ -363,7 +399,7 @@ button {
     background: #406c7e;
     color: white;
     border-radius: 5px;
-    font-size: 1.5vw;
+    font-size: 1vw;
     font-weight: 900;
     align-items: center;
 }
@@ -411,7 +447,7 @@ button {
     background: teal;
     border: 2px solid #000;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 1.5vw;
     color: white;
     padding: 5px;
     width: auto;
@@ -423,7 +459,7 @@ button {
     border: 2px solid #000;
     background: #c4c4c4;
     padding: 5px;
-    font-size: 1.2vw;
+    font-size: 1vw;
     display: flex;
     justify-content: space-around;
 }
