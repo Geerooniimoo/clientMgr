@@ -135,24 +135,21 @@ label {
 }
 
 .hourRow {
-    width: 475px;
+    /* width: 475px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     font-size: 1vw;
     position: relative;
 }
 
 .hourRow > .notes {
-    width: 40%;
-    height: 1rem;
-    overflow: hidden;
-    justify-content: left;
     align-items: start;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .hourRow > div {
-    width: 18%;
     border: 1px solid black;
     height: 1rem;
     font-size: 0.8vw;
@@ -171,7 +168,7 @@ label {
     background: white;
 }
 
-.hourRow > div.detailNotes {
+.detailNotes {
     background: white;
     position: absolute;
     top: 20px;
@@ -289,7 +286,6 @@ th {
     border: 1px solid black;
     background: white;
     color: black;
-    height: 2rem;
     text-align: center;
     padding: 0 0 0 10px;
     font-size: 1.2rem;
@@ -360,16 +356,29 @@ th {
     width: 50%;
 }
 
-.hourDiv th {
-    margin: 0;
-    padding: 0 5px;
-    text-align: center;
+.hoursDiv > table {
+    width: 250px;
+    table-layout: fixed;
 }
 
-.hourDiv td {
-    padding: 5px;
-    font-size: 1vw;
+.hoursDiv > table > tbody > tr > td {
+    border: 1px solid #000;
+}
+
+.hoursDiv > table > tbody > tr:nth-child(even) {
+    background: #1088c8a6;
+}
+
+.hoursDiv th {
+    margin: 0;
+    padding: 0 5px;
+    font-size: 1.2vw !important;
+}
+
+.hoursDiv td {
+    font-size: 0.7vw !important;
     text-align: center;
+    width: 5px !important;
 }
 
 .remainDiv {
@@ -387,7 +396,7 @@ th {
     justify-content: center;
 }
 
-.btnsDiv>* {
+.btnsDiv > * {
     width: 25%;
 }
 

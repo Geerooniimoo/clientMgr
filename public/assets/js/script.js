@@ -73,18 +73,36 @@ const renderDetails = id => {
             <div class='hoursDiv'></div>
         `;
 
-        hero.sessions.forEach(obj =>
-            document.getElementById(`row_${id}`).querySelector(".hoursDiv").innerHTML += `
-            <div class='hourRow' onmouseover='handleDetailNotes(this)' onmouseout='clearDetailNotes(this)'>
-                <div>DATE</div>
-                <div>${obj.date}</div>
-                <div>HOURS</div>
-                <div>${obj.hours}</div>
-                <div>NOTES</div>
-                <div class='notes'>${obj.notes}</div>
-                <div class='detailNotes'>${obj.notes}</div>
-            </div>
-        `);
+        let tableLen = parseInt(hDiv.getBoundingClientRect().width / 260);
+        
+        for (let i = 0; i < tableLen; i++) document.querySelector('.hoursDiv').innerHTML += `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>DATE</th>
+                            <th>HOURS</th>
+                            <th>NOTES</th>
+                        </tr>
+                    </thead>
+                    <tbody class='tRow'></tbody>
+                </table>
+        `;
+
+        let len = 0;
+
+        hero.sessions.forEach(obj => {
+
+            if(len == tableLen) len = 0;
+
+            document.querySelectorAll(".tRow")[len].innerHTML += `
+            <tr class='hourRow' onmouseover='handleDetailNotes(this)' onmouseout='clearDetailNotes(this)'>
+                <td>${obj.date}</td>
+                <td>${obj.hours}</td>
+                <td class='notes'>${obj.notes} <div class='detailNotes'>${obj.notes}</div></td>
+            </tr>
+            `
+            len++;
+        });
 
         h = `${hDiv.getBoundingClientRect().height}px`;
         hDiv.style.height = 0;
@@ -176,7 +194,7 @@ const clearDetailNotes = el => {
         document.querySelector('.section_2').style.overflow = 'hidden';
     };
     
-}
+};
 
 document.querySelectorAll('.hourRow').forEach(el => {
     el.addEventListener('mouseout', () => el.querySelector('.detailNotes').style.display = 'none')

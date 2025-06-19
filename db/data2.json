@@ -10,7 +10,7 @@
             1,
             1,
             4,
-            12
+            13
         ],
         "sessions": [
             {
@@ -917,6 +917,21 @@
                 "date": "6/14/2025",
                 "hours": 1,
                 "notes": "Time_Analysis/js/ch_start"
+            },
+            {
+                "date": "6/16/2025",
+                "hours": 2,
+                "notes": "Time_Analysis/js/ch_start/wk"
+            },
+            {
+                "date": "6/17/2025",
+                "hours": 1,
+                "notes": "Computer issues, Time_Analysis/js/ch_start"
+            },
+            {
+                "date": "6/18/2025",
+                "hours": 1,
+                "notes": "Time_Analysis/js/ch_range"
             }
         ]
     },
