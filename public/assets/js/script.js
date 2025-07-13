@@ -1,51 +1,51 @@
-let data = [], tutorDiv, sec, filterData;
+let data = [], tutorDiv, sec, filterData, owed, purchasedTime, owedTime, value, totalPurchased, totalOwed, parent, totalTutored, totalActive;
 
 const purchase = (i, id) => {
 
-    let sec = document.querySelector('.section_2');
-    if (sec) sec.style.height = 0;
+    let index = data.indexOf(data.find(obj => obj.id == id));
+    parent = document.getElementById(`row_${id}`);
+    
+    purchasedTime = i == 1 ? 1 : i == 2 ? 5 : i == 0 ? 0.5 : i == 3 ? 10 : 20;
+    owed = parent.querySelector('.owed');
+    owedTime = parseFloat(owed.innerText);
+    totalActive = document.querySelectorAll('.activeClients')[3];
 
-    let parent = document.getElementById(`row_${id}`);
-    let tutorDiv = document.getElementById('tutorDiv');
-    let owed = parent.querySelector('.owed');
+    if (!owedTime) totalActive.innerText = parseInt(totalActive.innerText) + 1;
 
-    if (tutorDiv) {
-        if (tutorDiv.parentElement != parent) {
-            tutorDiv.style.height = 0;
-            setTimeout(() => document.location.reload(), 1100);
-        };
-    }
-
-    let value = parseFloat(owed.innerText) +
-        (i == 1 ? 1 :
-            i == 2 ? 5 :
-                i == 0 ? 0.5 :
-                    i == 3 ? 10 : 20);
+    value = owedTime + purchasedTime;
 
     owed.innerText = value;
+    data[index].hours[i] += 1;
 
     if (document.getElementById('oweId')) oweId.innerText = value;
 
-    data[id - 1].hours[i] += 1;
+    if (document.getElementById('detailHead')) {
+        let hourDivIndex = i == 0 ? 1 : i == 1 ? 3 : i == 2 ? 5 : i == 3 ? 7 : 9;
+        detailHead.children[1].children[hourDivIndex].innerText = data[index].hours[i];
+        detailHead.children[1].children[11].innerText =
+            parseFloat(detailHead.children[1].children[11].innerText) + purchasedTime;
+    };
+
+    totalPurchased = document.querySelectorAll('.activeClients')[0];
+    totalPurchased.innerText = parseFloat(totalPurchased.innerText) + purchasedTime;
+
+    totalOwed = document.querySelectorAll('.activeClients')[2];
+    totalOwed.innerText = parseFloat(totalOwed.innerText) + purchasedTime;
+
+    pushData(data);
 };
 
-const renderDetails = id => {
+const details = id => {
+    let hero = data.find(obj => obj.id == id);
+    let total = hero.hours[0] * 0.5 + hero.hours[1] + hero.hours[2] * 5 + hero.hours[3] * 10 + hero.hours[4] * 20;
 
-    tutorDiv = document.getElementById('tutorDiv');
-    sec = document.querySelector('.section_2');
+    if(document.querySelector('.section_2')) document.querySelector('.section_2').remove();
 
-    const details = () => {
-        let hero = data.find(obj => obj.id == id);
-        let total = hero.hours[0] * 0.5 + hero.hours[1] + hero.hours[2] * 5 + hero.hours[3] * 10 + hero.hours[4] * 20;
+    document.getElementById(`row_${id}`).innerHTML += '<div class="section_2"></div>';
 
-        console.log({ hero, total });
+    hDiv = document.querySelector('.section_2');
 
-
-        document.getElementById(`row_${id}`).innerHTML += '<div class="section_2"></div>';
-
-        hDiv = document.querySelector('.section_2');
-
-        hDiv.innerHTML += `
+    hDiv.innerHTML += `
             <div id='detailHead'>
                 <div>
                     <div>email</div> 
@@ -70,12 +70,13 @@ const renderDetails = id => {
                     <div>${hero.phone}</div>
                 </div>
             </div>
+            <div id='tutorDiv'></div>
             <div class='hoursDiv'></div>
         `;
 
-        let tableLen = parseInt(hDiv.getBoundingClientRect().width / 260);
-        
-        for (let i = 0; i < tableLen; i++) document.querySelector('.hoursDiv').innerHTML += `
+    let tableLen = parseInt(hDiv.getBoundingClientRect().width / 260);
+
+    for (let i = 0; i < tableLen; i++) document.querySelector('.hoursDiv').innerHTML += `
                 <table>
                     <thead>
                         <tr>
@@ -88,28 +89,33 @@ const renderDetails = id => {
                 </table>
         `;
 
-        let len = 0;
+    let len = 0;
 
-        hero.sessions.forEach(obj => {
+    hero.sessions.forEach(obj => {
 
-            if(len == tableLen) len = 0;
+        if (len == tableLen) len = 0;
 
-            document.querySelectorAll(".tRow")[len].innerHTML += `
+        document.querySelectorAll(".tRow")[len].innerHTML += `
             <tr class='hourRow' onmouseover='handleDetailNotes(this)' onmouseout='clearDetailNotes(this)'>
                 <td>${obj.date}</td>
                 <td>${obj.hours}</td>
-                <td class='notes'>${obj.notes} <div class='detailNotes'>${obj.notes}</div></td>
+                <td class='notes'>${obj.notes} <div class='detailNotes'><p>${obj.notes}</p></div></td>
             </tr>
             `
-            len++;
-        });
+        len++;
+    });
 
-        h = `${hDiv.getBoundingClientRect().height}px`;
-        hDiv.style.height = 0;
-        hDiv.style.position = 'relative';
-        hDiv.style.opacity = 1;
-        setTimeout(() => { hDiv.style.height = h }, 1);
-    };
+    h = `${hDiv.getBoundingClientRect().height}px`;
+    hDiv.style.height = 0;
+    hDiv.style.position = 'relative';
+    hDiv.style.opacity = 1;
+    setTimeout(() => { hDiv.style.height = h }, 1);
+};
+
+const renderDetails = id => {
+
+    tutorDiv = document.getElementById('tutorDiv');
+    sec = document.querySelector('.section_2');
 
     if (sec && tutorDiv) {
 
@@ -132,10 +138,10 @@ const renderDetails = id => {
         tutorDiv.style.height = 0;
         setTimeout(() => {
             tutorDiv.remove();
-            details();
+            details(id);
         }, 1100);
 
-    } else { details() };
+    } else { details(id) };
 
 };
 
@@ -155,14 +161,14 @@ const renderRows = async data => {
                         <td>${hero.name}</td>
                         <td><button onclick="renderDetails('${hero.id}')">Details</button></td>
                         <td>
-                            <button onclick="purchase(0, ${hero.order})">1/2</button>
-                            <button onclick="purchase(1, ${hero.order})">1</button>
-                            <button onclick="purchase(2, ${hero.order})">5</button>
-                            <button onclick="purchase(3, ${hero.order})">10</button>
-                            <button onclick="purchase(4, ${hero.order})">20</button>
+                            <button onclick="purchase(0, '${hero.id}')">1/2</button>
+                            <button onclick="purchase(1, '${hero.id}')">1</button>
+                            <button onclick="purchase(2, '${hero.id}')">5</button>
+                            <button onclick="purchase(3, '${hero.id}')">10</button>
+                            <button onclick="purchase(4, '${hero.id}')">20</button>
                         </td>
                         <td>
-                            <button onclick="tutorFx(${hero.id})">- 1/2 hour</button>
+                            <button onclick="tutorFx('${hero.id}')">- 1/2 hour</button>
                         </td>
                         <td class='owed'>${owed}</td>
                     </tr>
@@ -186,33 +192,64 @@ const handleDetailNotes = el => {
 };
 
 const clearDetailNotes = el => {
-    
+
     let detailNotes = el.querySelector('.detailNotes');
-    
+
     if (detailNotes.style.display == 'block') {
         detailNotes.style.display = 'none';
         document.querySelector('.section_2').style.overflow = 'hidden';
     };
-    
+
 };
 
 document.querySelectorAll('.hourRow').forEach(el => {
     el.addEventListener('mouseout', () => el.querySelector('.detailNotes').style.display = 'none')
 });
 
-const handleSubmit = (e, i) => {
-    document.getElementById('tutorDiv').style.height = 0;
-    setTimeout(() => document.getElementById('tutorDiv').remove(), 1000);
+const handleSubmit = async id => {
+
+    await pushData(data);
+
+    sec = document.querySelector('.section_2');
+    tutorDiv = document.getElementById('tutorDiv');
+
+    if (sec) {
+        
+        tutorDiv.innerHTML = '';
+        tutorDiv.style.height = 0;
+        sec.style.height = `${sec.getBoundingClientRect().height - 250}px`;
+        setTimeout(() => details(id), 1000);
+
+    } else {
+        
+        document.getElementById('tutorDiv').style.height = 0;
+        setTimeout(() => document.getElementById('tutorDiv').remove(), 1000);
+
+    };
 };
 
 const tutorFx = id => {
 
     let hourIndex;
     let today = new Date().toLocaleDateString();
-    let dIndex = data.indexOf(d.find(obj => obj.id == id));
+    tutorDiv = document.getElementById('tutorDiv');
+    let dIndex = data.indexOf(data.find(obj => obj.id == id));
     let hourObj = data[dIndex].sessions.find(({ date }) => date == today);
-
+    
+    totalTutored = document.querySelectorAll('.activeClients')[1];
+    totalOwed = document.querySelectorAll('.activeClients')[2];
+    parent = document.getElementById(`row_${id}`);
     sec = document.querySelector('.section_2');
+    owed = parent.querySelector('.owed');
+
+    totalActive = document.querySelectorAll('.activeClients')[3];
+    if(parseFloat(owed.innerText) == 0.5) totalActive.innerText = parseInt(totalActive.innerText) - 1; 
+
+    owed.innerText = parseFloat(owed.innerText) - 0.5;
+    totalOwed.innerText = parseFloat(totalOwed.innerText) - 0.5;
+    totalTutored.innerText = parseFloat(totalTutored.innerText) + 0.5;
+
+
 
     if (hourObj) {
         hourIndex = data[dIndex].sessions.indexOf(hourObj);
@@ -223,28 +260,33 @@ const tutorFx = id => {
     };
 
     let sessions = data[dIndex].sessions[hourIndex].hours;
-    let owed = parseFloat(document.getElementById(`row_${id}`).querySelector('.owed').innerText) - sessions;
-    document.getElementById(`row_${id}`).querySelector('.owed').innerText = owed;
 
-    if (
+    if (sec) {
 
-        tutorDiv &&
-        tutorDiv.parentElement.id.split('_')[1] != id
+        let el = document.getElementById('tutorDiv');
 
-    ) {
+        el.innerHTML = `
+            <table class='tutorInnerDiv'>
+                    <tbody>
+                        <tr><td colspan='2'"><h3>${new Date().toDateString()}</h3></td></tr>
+                        <tr><td><h4>Hours Tutored Today</h4></td><td id='tutorId'>${sessions}</td></tr>
+                        <tr><td><h4>Total Hours Owed </h4></td><td id='oweId'>${owed.innerText}</td></tr>
+                        <tr><td colspan='2'><label>Notes</label></td></tr>
+                        <tr><td colspan='2'><textarea onchange="handleNotes(this,${dIndex})">${data[dIndex].sessions[hourIndex].notes}</textarea></td></tr>
+                        <tr><td colspan='2'><button onclick='handleSubmit("${id}")'>Submit</button></td></tr>
+                    </tbody>
+                </table>      
+        `;
 
-        tutorDiv.style.height = 0;
-        setTimeout(() => { document.location.reload() }, 1100);
-
-    } else if (sec) {
-
-        sec.style.height = 0;
-        setTimeout(() => { document.location.reload() }, 1100);
+        if (!el.getBoundingClientRect().height) {
+            el.style.height = '250px';
+            sec.style.height = `${sec.getBoundingClientRect().height + 250}px`;
+        };
 
     } else if (tutorDiv) {
 
         document.getElementById('tutorId').innerText = sessions;
-        document.getElementById('oweId').innerText = owed;
+        document.getElementById('oweId').innerText = owed.innerText;
 
     } else {
 
@@ -254,10 +296,10 @@ const tutorFx = id => {
                     <tbody>
                         <tr><td colspan='2'"><h3>${new Date().toDateString()}</h3></td></tr>
                         <tr><td><h4>Hours Tutored Today</h4></td><td id='tutorId'>${sessions}</td></tr>
-                        <tr><td><h4>Total Hours Owed </h4></td><td id='oweId'>${owed}</td></tr>
+                        <tr><td><h4>Total Hours Owed </h4></td><td id='oweId'>${owed.innerText}</td></tr>
                         <tr><td colspan='2'><label>Notes</label></td></tr>
                         <tr><td colspan='2'><textarea onchange="handleNotes(this,${dIndex})">${data[dIndex].sessions[hourIndex].notes}</textarea></td></tr>
-                        <tr><td colspan='2'><button onclick='handleSubmit(this,${dIndex})'>Submit</button></td></tr>
+                        <tr><td colspan='2'><button onclick='handleSubmit("${id}")'>Submit</button></td></tr>
                     </tbody>
                 </table>
             </div>`;
@@ -286,16 +328,16 @@ const init = async heroId => {
     container.innerHTML = `
     <div id="newClientDiv" class="row">
         <div id="summary">
-            <label for="totalPurchased">Total Purchased</label>
-            <span id="activeClients">${purchased}</span>
-            <label for="totalTutored">Total Tutored</label>
-            <span id="activeClients">${sessions}
+            <label for="">Total Purchased</label>
+            <span class="activeClients">${purchased}</span>
+            <label for="">Total Tutored</label>
+            <span class="activeClients">${sessions}
             </span>
-            <label for="totalOwed">Total Owed</label>
-            <span id="activeClients">${purchased - sessions}
+            <label for="">Total Owed</label>
+            <span class="activeClients">${purchased - sessions}
             </span>
             <label for="activeClients">Active Heroes</label>
-            <span id="activeClients">${activeClients}</span>
+            <span class="activeClients">${activeClients}</span>
         </div>
         <div id="addHeroDiv">
             <input id="heroName" placeholder="Hero's Name">

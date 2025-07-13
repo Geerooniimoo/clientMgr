@@ -1,6 +1,6 @@
 const express = require('express');
 const { writeFile } = require('fs');
-let store = require('./db/data2.json');
+let store = require('./db/data.json');
 const { log } = require('console');
 
 const app = express();
@@ -14,7 +14,7 @@ app.use(express.static('public'));
 app.get('/api/getdata', (req, res) => { res.json(store) });
 
 app.post('/api/adddata', ({ body }, res ) => {
-    writeFile('./db/data2.json', JSON.stringify(body), err => {
+    writeFile('./db/data.json', JSON.stringify(body), err => {
         if(err) { console.log(err) };
         res.json('Completed upload!')
     })

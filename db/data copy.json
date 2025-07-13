@@ -1,7 +1,22 @@
 [
     {
-        "id": "6084c",
+        "id": "25e6a",
         "order": 1,
+        "email": "lcrowal@icloud.com",
+        "phone": "1(301)787-4091",
+        "name": "Leomar Crowal",
+        "hours": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "sessions": []
+    },
+    {
+        "id": "6084c",
+        "order": 2,
         "name": "Jason Cano",
         "email": "jasoncano0509@gmail.com",
         "phone": "1(555) 555-5555",
@@ -10,7 +25,7 @@
             1,
             1,
             4,
-            13
+            14
         ],
         "sessions": [
             {
@@ -932,12 +947,77 @@
                 "date": "6/18/2025",
                 "hours": 1,
                 "notes": "Time_Analysis/js/ch_range"
+            },
+            {
+                "date": "6/19/2025",
+                "hours": 1,
+                "notes": "Time_Analysis/js/ch_range"
+            },
+            {
+                "date": "6/20/2025",
+                "hours": 2,
+                "notes": "Time_Analysis/js/fixed Analysis and started working on Render"
+            },
+            {
+                "date": "6/23/2025",
+                "hours": 2,
+                "notes": "Updated Time-Analysis' Global Database in Render."
+            },
+            {
+                "date": "6/25/2025",
+                "hours": 1,
+                "notes": "Time-Analysis/Connecting to Render Global site."
+            },
+            {
+                "date": "6/27/2025",
+                "hours": 3,
+                "notes": "Time-Analysis/Worked one hour with Jason, two hours on my own/Fixed data--There were discrepencies with local and gobal data.  Plus, the ids were all over the place/Fixed id's sequence and added the missing data/Fixed DATABASE_URL variable in render and restarted site/The Public site https://time-analysis.onrender.com is now working."
+            },
+            {
+                "date": "6/30/2025",
+                "hours": 2,
+                "notes": "Time-Analysis/created favicon for site"
+            },
+            {
+                "date": "7/1/2025",
+                "hours": 1,
+                "notes": "Time-Analysis/Fixed dupplicate pkey generation issue in Render/Tried to fix data but it was too distorted to fix alone."
+            },
+            {
+                "date": "7/2/2025",
+                "hours": 2,
+                "notes": "Time-Analysis/Working on standardizing data in Render/Need to work on month's frequency./Worked on my own for one hour.  Added month to the frequency and range selection"
+            },
+            {
+                "date": "7/3/2025",
+                "hours": 1,
+                "notes": "Time-Analysis/Worked with Jason to push the two updated functions (ch_frequency, ch_range) to add 'Month' frequency to the analaysis.  After testing, noticed Jun/2025 shows a wrong reading I need to fix."
+            },
+            {
+                "date": "7/4/2025",
+                "hours": 1.5,
+                "notes": "Time-Analysis/Fixed over scheduling an hour, and fixed the filtering function by replacing indexOf for lastIndexOf where needed."
+            },
+            {
+                "date": "7/5/2025",
+                "hours": 1,
+                "notes": "Time-Analysis/Worked on standarizing data"
+            },
+            {
+                "date": "7/7/2025",
+                "hours": 2.5,
+                "notes": "Time-Analysis/Standarizing data/Worked for 1/2 hour on my own cleaning duplicated \"Camping\" tasks."
+            },
+            {
+                "date": "7/8/2025",
+                "hours": 1,
+                "notes": "Time-Analysis/Finished standarizing data, and created code to add options intead of the input field."
             }
         ]
     },
     {
         "id": "733b",
-        "order": 2,
+        "order": 3,
         "name": "Yakup Altinisik",
         "email": "jacob@goldenlightrealty.com",
         "phone": "(832) 605-0398",
@@ -1758,12 +1838,22 @@
                 "date": "6/14/2025",
                 "hours": 1,
                 "notes": "Boron/Optimization_Plan,Trump/Scorpion_and_The_Frog"
+            },
+            {
+                "date": "6/22/2025",
+                "hours": 1,
+                "notes": "Boron/Added fb, instergram and youtube to the website"
+            },
+            {
+                "date": "6/30/2025",
+                "hours": 1,
+                "notes": "Boron Vigor/Replaced media of black woman for one that shows lubricant being poured into engine."
             }
         ]
     },
     {
         "id": "db4b2",
-        "order": 3,
+        "order": 4,
         "name": "Taylor Aldridge",
         "email": "tayloraldridge3@gmail.com",
         "phone": "",
@@ -1934,7 +2024,7 @@
     },
     {
         "id": "efd4c",
-        "order": 4,
+        "order": 5,
         "name": "Michelle Minkowitz",
         "email": "michelleaminkowitz@gmail.com",
         "phone": "(718) 578-1904",
@@ -2300,7 +2390,7 @@
     },
     {
         "id": "a467e",
-        "order": 5,
+        "order": 6,
         "name": "Jennifer Harris",
         "email": "jennifer.v.harris@outlook.com",
         "phone": "(301) 957-1225",
@@ -2501,7 +2591,7 @@
     },
     {
         "id": "c68f7",
-        "order": 6,
+        "order": 7,
         "name": "Catherine Matthews",
         "email": "caseyvmatthews@gmail.com",
         "phone": "(856) 745-2994",
@@ -2967,7 +3057,7 @@
     },
     {
         "id": "e1c5a",
-        "order": 7,
+        "order": 8,
         "name": "Alexis Vasquez",
         "email": "lexx.sunshineteam@gmail.com",
         "phone": "3524286931",
@@ -3033,7 +3123,7 @@
     },
     {
         "id": "f2b82",
-        "order": 8,
+        "order": 9,
         "name": "Damilare Unique Omoboriowo",
         "email": "Domoboriowo14@Gmail.com",
         "phone": "(862)704-3809",
@@ -3174,7 +3264,7 @@
     },
     {
         "id": "2030f",
-        "order": 9,
+        "order": 10,
         "name": "Hasmig Gregorian",
         "email": "hasmigg23@gmail.com",
         "phone": "",
@@ -3385,7 +3475,7 @@
     },
     {
         "id": "a18b4",
-        "order": 10,
+        "order": 11,
         "name": "Salvador",
         "email": "salceja@gmail.com",
         "phone": "",
@@ -3421,7 +3511,7 @@
     },
     {
         "id": "8a191",
-        "order": 11,
+        "order": 12,
         "name": "Marc Rhymanun",
         "email": "",
         "phone": "",
@@ -3512,7 +3602,7 @@
     },
     {
         "id": "94777",
-        "order": 12,
+        "order": 13,
         "name": "Noel Sanchez",
         "email": "ns.sanchez724@gmail.com",
         "phone": "(239) 560-3094",
@@ -3558,7 +3648,7 @@
     },
     {
         "id": "dfd56",
-        "order": 13,
+        "order": 14,
         "name": "Hipolito Romero",
         "email": "Romero.Hipolito@Gmail.com",
         "phone": "3478805004",
@@ -3624,7 +3714,7 @@
     },
     {
         "id": "3769b",
-        "order": 14,
+        "order": 15,
         "name": "Debora Cano",
         "email": "",
         "phone": "",
@@ -3650,7 +3740,7 @@
     },
     {
         "id": "505f6",
-        "order": 15,
+        "order": 16,
         "name": "Tommy Harding",
         "email": "breemsbliss@gmail.com",
         "phone": "1(804)687-8383",
