@@ -1,9 +1,11 @@
+:root * {
+    transition: all 1s ease-in-out;
+}
 
 body {
     margin: 0;
     background: repeating-linear-gradient(35deg, darkgray 10px, black 11px);
     background-attachment: fixed;
-    height: 150vh;
 }
 
 nav {
@@ -33,46 +35,164 @@ nav {
     justify-content: space-between;
 }
 
-#labels {
-    border-radius: 8px 8px 0 0;
+label {
+    font-size: 1.2rem;
+    font-weight: 900;
 }
 
 .row {
-    padding: 5px;
     display: flex;
     flex-basis: 100%;
-    border-radius: 4px;
-    background: white;
-    border: 1px solid #000;
     justify-content: space-between;
-    opacity: .85;
     flex-wrap: wrap;
-    border-radius: 0;
-
 }
 
-.row > * {
+#tutorDiv {
+    width: 100%;
     display: flex;
-    align-self: stretch;
-    justify-content: space-between;
-    font-size: 2vw;
-    font-weight: 900;
-    width: 30%;
+    flex-direction: column;
+    align-items: center;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    border: none;
 }
 
-.remain {
-    background: #bababa;
+#tutorDiv * {
+    margin: 5px;
+}
+
+#tutorDiv table {
+    white-space: nowrap;
+}
+
+#tutorDiv table tbody {
+    min-width: 200px;
+    width: 350px;
+}
+
+#tutorDiv textarea {
+    margin: 5px;
+    padding: 5px;
+    width: 90%;
+}
+
+.tutorInnerDiv {
+    display: flex;
+    justify-content: space-around;
+}
+
+.section_2 {
+    display: flex;
+    width: 100%;
     border: 1px solid black;
-    padding: 0 27px;
+    flex-wrap: wrap;
+    margin: 5px 0px;
+    padding: 5px;
+    background: #dbdbdb;
+    justify-content: space-around;
+    overflow: hidden;
+}
+
+#detailHead {
+    height: 25px;
+}
+
+#detailHead > div {
+    display: flex;
+    align-items: stretch;
+}
+
+#detailHead > div > div {
+    display: flex;
+    padding: 4px;
+    font-size: 1vw;
+    font-weight: 900;
+    align-items: center;
+    border: 1px solid black;
+    height: 1rem;
+}
+
+#detailHead > div > div:nth-child(odd) {
+    background: #406c7e;
+    color: white;
+}
+
+#detailHead > div > div:nth-child(even) {
+    color: black;
+    background: white;
+}
+
+.section_2 > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid black;
+    padding: 5px;
+    margin-top: 10px;
+    background: navajowhite;
+}
+
+.hourRow {
+    /* width: 475px;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+    font-size: 1vw;
+    position: relative;
+}
+
+.hourRow > .notes {
+    align-items: start;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.hourRow > div {
+    border: 1px solid black;
+    height: 1rem;
+    font-size: 0.8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hourRow > div:nth-child(odd) {
+    background: #406c7e;
+    color: white;
+}
+
+.hourRow > div:nth-child(even) {
+    color: black;
+    background: white;
+}
+
+.detailNotes {
+    background: white;
+    position: absolute;
+    top: 20px;
+    padding: 5px;
+    display: none;
+    z-index: 1;
+    border: 1px solid black;
+    border-radius: 5px;
+    max-width: 350px;
+    right: -60%;
+    color: black;
+    text-wrap: auto;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.hourRow > div:nth-child(4) {
+    width: 2rem;
 }
 
 .titleDiv {
     display: flex;
     justify-content: space-between;
-}
-
-.tc {
-    justify-content: center;
 }
 
 .title {
@@ -88,7 +208,7 @@ nav {
     width: 50%;
     padding: 5px;
     flex-direction: column;
-    font-size: 1.4vw;
+    font-size: 1vw;
 }
 
 .datesDiv {
@@ -102,33 +222,79 @@ nav {
 }
 
 table {
-    width: 48%;
+    width: 100%;
 }
 
 tr {
     border: 1px solid #000;
+    background: white;
 }
 
-tr:nth-child(odd) {
-    background: white;
+tr td:nth-child(1), tr th:nth-child(1) {
+    width: 10%;
+    text-align: center;
+}
+
+tr td:nth-child(1) input {
+    width: 25px;
+    text-align: center;
+    font-weight: 900;
+}
+
+tr td:nth-child(2), tr th:nth-child(2) {
+    width: 15%;
+    text-align: center;
+    font-weight: 900;
+    font-size: .9rem;
+}
+
+tr td:nth-child(3), tr th:nth-child(3) {
+    width: 15%;
+    text-align: center;
+    padding: 3px;
+}
+
+tr td:nth-child(3) button {
+    background: #eded0059;
+    color: black;
+}
+
+tr td:nth-child(4), tr th:nth-child(4) {
+    width: 25%;
+    text-align: center;
+}
+
+tr td:nth-child(5), tr th:nth-child(5) {
+    width: 20%;
+    text-align: center;
+}
+
+tr td:nth-child(5) button {
+    background: #6b0000e3;
+}
+
+tr td:nth-child(6), tr th:nth-child(6) {
+    width: 20%;
+    text-align: center;
+    font-weight: 900;
+}
+
+tr td:nth-child(6) {
+    width: 20%;
+    text-align: center;
+    font-weight: 900;
+    font-size: 1.3rem;
 }
 
 th {
     border: 1px solid black;
-    background: #484848;
-    color: white;
-    text-align: left;
+    background: white;
+    color: black;
+    text-align: center;
     padding: 0 0 0 10px;
-    font-size: 1.5vw;
+    font-size: 1.2rem;
+    font-weight: 900;
 }
-
-td {
-    padding: 0 0 0 10px;
-    border: 1px solid #000;
-    font-size: 1vw;
-}
-
-
 
 .datesDiv > span:nth-child(odd) {
     font-size: 1vw;
@@ -166,7 +332,7 @@ td {
 
 .focusDiv h1 {
     width: 100%;
-    font-size: 1.5vw;
+    font-size: 1vw;
     margin-right: 0 !important;
     margin-bottom: 10px;
     text-align: center;
@@ -194,16 +360,30 @@ td {
     width: 50%;
 }
 
-.hourDiv th {
-    margin: 0;
-    padding: 0 5px;
-    text-align: center;
+.hoursDiv > table {
+    width: 250px;
+    table-layout: fixed;
 }
 
-.hourDiv td {
-    padding: 5px;
-    font-size: 1.5vw;
+.hoursDiv > table > tbody > tr > td {
+    border: 1px solid #000;
+    height: 0.5vw;
+}
+
+.hoursDiv > table > tbody > tr:nth-child(even) {
+    background: #1088c8a6;
+}
+
+.hoursDiv th {
+    margin: 0;
+    padding: 0 5px;
+    font-size: 1.2vw !important;
+}
+
+.hoursDiv td {
+    font-size: 0.7vw !important;
     text-align: center;
+    width: 5px !important;
 }
 
 .remainDiv {
@@ -221,7 +401,7 @@ td {
     justify-content: center;
 }
 
-.btnsDiv>* {
+.btnsDiv > * {
     width: 25%;
 }
 
@@ -230,47 +410,70 @@ td {
 }
 
 button {
-    background: seagreen;
+    background: #406c7e;
     color: white;
     border-radius: 5px;
-    font-size: 1.5vw;
+    font-size: 1vw;
     font-weight: 900;
     align-items: center;
 }
 
 #newClientDiv {
     border-radius: 4px;
-    margin-bottom: 20px;
-    background: white;
     display: flex;
     justify-content: space-between;
-    flex-wrap: nowrap;
-    border: 2px solid #000;
+    flex-wrap: wrap;
 }
 
 #newClientDiv > * {
     align-items: center;
     width: 12%;
-    margin: 0 5px;
-    /* border: 1px solid #000; */
     border-radius: 0;
     font-size: 1vw;
     text-align: center;
 }
 
-#activeClients, #remainHours {
-    background: #810a0a;
+#addHeroDiv {
+    border: 2px solid #000;
+    width: 100%;
+    margin-top: 5px;
+    padding: 5px;
+    background: #c4c4c4;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#addHeroDiv input {
+    border: 2px solid #000;
+    height: 1.5rem;
+    text-align: center;
+}
+
+#addHeroDiv button {
+    height: 2rem;
+    border-radius: 0;
+    background: #ffffb2;
+    color: black;
+    font-size: 1.2rem;
+}
+
+.activeClients, #remainHours {
+    background: teal;
     border: 2px solid #000;
     justify-content: center;
+    font-size: 1.5vw;
     color: white;
     padding: 5px;
     width: auto;
+    font-weight: 900;
 }
 
 #summary {
-    width: 30%;
+    width: 100%;
     border: 2px solid #000;
-    background: lightskyblue;
+    background: #c4c4c4;
     padding: 5px;
-    font-size: 1.2vw;
+    font-size: 1vw;
+    display: flex;
+    justify-content: space-around;
 }

@@ -13,6 +13,13 @@ app.use(express.static('public'));
 
 app.get('/api/getdata', (req, res) => { res.json(store) });
 
+app.post('/api/adddata', ({ body }, res ) => {
+    writeFile('./db/data.json', JSON.stringify(body), err => {
+        if(err) { console.log(err) };
+        res.json('Completed upload!')
+    })
+});
+
 app.post('/api/addclient', ({ body }, res) => {
 
     body.id = Math.floor(Math.random() * 1000000).toString(16);
